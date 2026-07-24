@@ -51,8 +51,11 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  Users: 'Users',
   Notifications: 'Notifications',
-  Users: 'Users'
+  Email: 'Email',
+  SMS: 'SMS',
+  Push: 'Push'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -71,6 +74,18 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const UsersScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  name: 'name',
+  password: 'password',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
+
+
 export const NotificationsScalarFieldEnum = {
   id: 'id',
   title: 'title',
@@ -84,16 +99,37 @@ export const NotificationsScalarFieldEnum = {
 export type NotificationsScalarFieldEnum = (typeof NotificationsScalarFieldEnum)[keyof typeof NotificationsScalarFieldEnum]
 
 
-export const UsersScalarFieldEnum = {
+export const EmailScalarFieldEnum = {
   id: 'id',
-  email: 'email',
-  name: 'name',
-  password: 'password',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  notificationId: 'notificationId',
+  recipient: 'recipient',
+  state: 'state',
+  sentAt: 'sentAt'
 } as const
 
-export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
+export type EmailScalarFieldEnum = (typeof EmailScalarFieldEnum)[keyof typeof EmailScalarFieldEnum]
+
+
+export const SMSScalarFieldEnum = {
+  id: 'id',
+  notificationId: 'notificationId',
+  recipient: 'recipient',
+  state: 'state',
+  sentAt: 'sentAt'
+} as const
+
+export type SMSScalarFieldEnum = (typeof SMSScalarFieldEnum)[keyof typeof SMSScalarFieldEnum]
+
+
+export const PushScalarFieldEnum = {
+  id: 'id',
+  notificationId: 'notificationId',
+  recipient: 'recipient',
+  state: 'state',
+  sentAt: 'sentAt'
+} as const
+
+export type PushScalarFieldEnum = (typeof PushScalarFieldEnum)[keyof typeof PushScalarFieldEnum]
 
 
 export const SortOrder = {

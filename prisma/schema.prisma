@@ -7,16 +7,6 @@ datasource db {
   provider = "postgresql"
 }
 
-model Notifications {
-  id        Int      @id @default(autoincrement())
-  title     String
-  content   String
-  channel     String
-  authorId  Int?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  author    Users?   @relation(fields: [authorId], references: [id])
-}
 
 model Users {
   id            Int             @id @default(autoincrement())
@@ -26,4 +16,47 @@ model Users {
   createdAt     DateTime        @default(now())
   updatedAt     DateTime        @updatedAt
   notifications Notifications[]
+}
+
+model Notifications {
+  id        Int      @id @default(autoincrement())
+  title     String
+  content   String
+  channel     String
+  authorId  Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  author    Users   @relation(fields: [authorId], references: [id])
+
+  emailId Email?
+  smsId SMS?
+  pushId Push?
+ 
+}
+
+model Email {
+  id Int @id @default(autoincrement())
+  notificationId Int @unique
+  recipient String 
+  state String
+  sentAt DateTime
+  notification Notifications @relation(fields:[notificationId], references:[id])
+}
+
+model SMS{
+  id Int @id @default(autoincrement())
+  notificationId Int @unique
+  recipient Int 
+  state String
+  sentAt DateTime
+  notification Notifications @relation(fields:[notificationId], references:[id])
+}
+
+model Push{
+  id Int @id @default(autoincrement())
+  notificationId Int @unique
+  recipient String 
+  state String
+  sentAt DateTime
+  notification Notifications @relation(fields:[notificationId], references:[id])
 }

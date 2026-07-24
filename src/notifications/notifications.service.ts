@@ -1,4 +1,4 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
 import { PrismaService } from 'src/prisma.service';
@@ -28,7 +28,7 @@ export class NotificationsService {
           msg: 'Notificacion creada con exito',
           notification: notification,
         };
-      throw new UnauthorizedException('Credenciales incorrectas');
+      throw new NotFoundException('No se pudo crear la notificacion');
     }
   }
 
@@ -63,7 +63,7 @@ export class NotificationsService {
       },
     });
     if (!notification)
-      throw new UnauthorizedException('No se encontro la notificacion');
+      throw new NotFoundException('No se encontro la notificacion');
 
     const updateNotification = await this.prisma.notifications.update({
       where: { authorId: sub, id: idNotification },
@@ -74,7 +74,7 @@ export class NotificationsService {
       },
     });
     if (!updateNotification)
-      throw new UnauthorizedException('No se pudo actualizar la Notificacion');
+      throw new NotFoundException('No se pudo actualizar la Notificacion');
     return updateNotification;
   }
 
@@ -86,7 +86,7 @@ export class NotificationsService {
       },
     });
     if (!notification)
-      throw new UnauthorizedException('No se encontro la notificacion');
+      throw new NotFoundException('No se encontro la notificacion');
     const deleteNotification = await this.prisma.notifications.delete({
       where: {
         authorId: sub,
@@ -95,5 +95,6 @@ export class NotificationsService {
     });
     console.log(deleteNotification);
     if (deleteNotification) return 'Notificacion eliminada';
+    throw new NotFoundException('No se pudo eliminar la notificacion');
   }
 }

@@ -14,13 +14,7 @@ export class AppController {
 
   @Public()
   @Get()
-  getNotifications(@CurrentUser() user: object): string {
-    return this.appService.getNotifications();
-  }
-
-  @UseGuards(JwtAuthGuard)
-  @Get('profile')
-  getProfile(@Request() req) {
-    return req.user;
+  getAPI(): string {
+    return this.appService.getAPI();
   }
 }

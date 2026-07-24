@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from 'src/prisma.service';
@@ -17,6 +17,7 @@ export class UsersService {
         },
       });
       if (user) return user;
+      throw new NotFoundException('No se pudo Registrar el usuario');
     }
   }
 

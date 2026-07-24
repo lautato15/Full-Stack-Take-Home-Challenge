@@ -340,11 +340,6 @@ export type UsersUncheckedUpdateManyInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type UsersNullableScalarRelationFilter = {
-  is?: Prisma.UsersWhereInput | null
-  isNot?: Prisma.UsersWhereInput | null
-}
-
 export type UsersCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   email?: Prisma.SortOrder
@@ -380,24 +375,43 @@ export type UsersSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
 }
 
+export type UsersScalarRelationFilter = {
+  is?: Prisma.UsersWhereInput
+  isNot?: Prisma.UsersWhereInput
+}
+
+export type StringFieldUpdateOperationsInput = {
+  set?: string
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
+}
+
+export type DateTimeFieldUpdateOperationsInput = {
+  set?: Date | string
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
+}
+
 export type UsersCreateNestedOneWithoutNotificationsInput = {
   create?: Prisma.XOR<Prisma.UsersCreateWithoutNotificationsInput, Prisma.UsersUncheckedCreateWithoutNotificationsInput>
   connectOrCreate?: Prisma.UsersCreateOrConnectWithoutNotificationsInput
   connect?: Prisma.UsersWhereUniqueInput
 }
 
-export type UsersUpdateOneWithoutNotificationsNestedInput = {
+export type UsersUpdateOneRequiredWithoutNotificationsNestedInput = {
   create?: Prisma.XOR<Prisma.UsersCreateWithoutNotificationsInput, Prisma.UsersUncheckedCreateWithoutNotificationsInput>
   connectOrCreate?: Prisma.UsersCreateOrConnectWithoutNotificationsInput
   upsert?: Prisma.UsersUpsertWithoutNotificationsInput
-  disconnect?: Prisma.UsersWhereInput | boolean
-  delete?: Prisma.UsersWhereInput | boolean
   connect?: Prisma.UsersWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UsersUpdateToOneWithWhereWithoutNotificationsInput, Prisma.UsersUpdateWithoutNotificationsInput>, Prisma.UsersUncheckedUpdateWithoutNotificationsInput>
-}
-
-export type NullableStringFieldUpdateOperationsInput = {
-  set?: string | null
 }
 
 export type UsersCreateWithoutNotificationsInput = {
