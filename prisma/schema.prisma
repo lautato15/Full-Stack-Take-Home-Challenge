@@ -29,7 +29,7 @@ model Notifications {
   author    Users   @relation(fields: [authorId], references: [id])
 
   emailId Email?
-  smsId SMS?
+  smsId Sms?
   pushId Push?
  
 }
@@ -39,16 +39,16 @@ model Email {
   notificationId Int @unique
   recipient String 
   state String
-  sentAt DateTime
+  sentAt DateTime ?
   notification Notifications @relation(fields:[notificationId], references:[id])
 }
 
-model SMS{
+model Sms{
   id Int @id @default(autoincrement())
   notificationId Int @unique
   recipient Int 
   state String
-  sentAt DateTime
+  sentAt DateTime ?
   notification Notifications @relation(fields:[notificationId], references:[id])
 }
 
@@ -57,6 +57,6 @@ model Push{
   notificationId Int @unique
   recipient String 
   state String
-  sentAt DateTime
+  sentAt DateTime ?
   notification Notifications @relation(fields:[notificationId], references:[id])
 }

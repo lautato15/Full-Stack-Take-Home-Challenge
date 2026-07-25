@@ -11,6 +11,6 @@
 export type * from './models/Users'
 export type * from './models/Notifications'
 export type * from './models/Email'
-export type * from './models/SMS'
+export type * from './models/Sms'
 export type * from './models/Push'
 export type * from './commonInputTypes'

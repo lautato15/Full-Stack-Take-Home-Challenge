@@ -238,7 +238,7 @@ export type NotificationsWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"Notifications"> | Date | string
   author?: Prisma.XOR<Prisma.UsersScalarRelationFilter, Prisma.UsersWhereInput>
   emailId?: Prisma.XOR<Prisma.EmailNullableScalarRelationFilter, Prisma.EmailWhereInput> | null
-  smsId?: Prisma.XOR<Prisma.SMSNullableScalarRelationFilter, Prisma.SMSWhereInput> | null
+  smsId?: Prisma.XOR<Prisma.SmsNullableScalarRelationFilter, Prisma.SmsWhereInput> | null
   pushId?: Prisma.XOR<Prisma.PushNullableScalarRelationFilter, Prisma.PushWhereInput> | null
 }
 
@@ -252,7 +252,7 @@ export type NotificationsOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   author?: Prisma.UsersOrderByWithRelationInput
   emailId?: Prisma.EmailOrderByWithRelationInput
-  smsId?: Prisma.SMSOrderByWithRelationInput
+  smsId?: Prisma.SmsOrderByWithRelationInput
   pushId?: Prisma.PushOrderByWithRelationInput
 }
 
@@ -269,7 +269,7 @@ export type NotificationsWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"Notifications"> | Date | string
   author?: Prisma.XOR<Prisma.UsersScalarRelationFilter, Prisma.UsersWhereInput>
   emailId?: Prisma.XOR<Prisma.EmailNullableScalarRelationFilter, Prisma.EmailWhereInput> | null
-  smsId?: Prisma.XOR<Prisma.SMSNullableScalarRelationFilter, Prisma.SMSWhereInput> | null
+  smsId?: Prisma.XOR<Prisma.SmsNullableScalarRelationFilter, Prisma.SmsWhereInput> | null
   pushId?: Prisma.XOR<Prisma.PushNullableScalarRelationFilter, Prisma.PushWhereInput> | null
 }, "id">
 
@@ -309,7 +309,7 @@ export type NotificationsCreateInput = {
   updatedAt?: Date | string
   author: Prisma.UsersCreateNestedOneWithoutNotificationsInput
   emailId?: Prisma.EmailCreateNestedOneWithoutNotificationInput
-  smsId?: Prisma.SMSCreateNestedOneWithoutNotificationInput
+  smsId?: Prisma.SmsCreateNestedOneWithoutNotificationInput
   pushId?: Prisma.PushCreateNestedOneWithoutNotificationInput
 }
 
@@ -322,7 +322,7 @@ export type NotificationsUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   emailId?: Prisma.EmailUncheckedCreateNestedOneWithoutNotificationInput
-  smsId?: Prisma.SMSUncheckedCreateNestedOneWithoutNotificationInput
+  smsId?: Prisma.SmsUncheckedCreateNestedOneWithoutNotificationInput
   pushId?: Prisma.PushUncheckedCreateNestedOneWithoutNotificationInput
 }
 
@@ -334,7 +334,7 @@ export type NotificationsUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   author?: Prisma.UsersUpdateOneRequiredWithoutNotificationsNestedInput
   emailId?: Prisma.EmailUpdateOneWithoutNotificationNestedInput
-  smsId?: Prisma.SMSUpdateOneWithoutNotificationNestedInput
+  smsId?: Prisma.SmsUpdateOneWithoutNotificationNestedInput
   pushId?: Prisma.PushUpdateOneWithoutNotificationNestedInput
 }
 
@@ -347,7 +347,7 @@ export type NotificationsUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   emailId?: Prisma.EmailUncheckedUpdateOneWithoutNotificationNestedInput
-  smsId?: Prisma.SMSUncheckedUpdateOneWithoutNotificationNestedInput
+  smsId?: Prisma.SmsUncheckedUpdateOneWithoutNotificationNestedInput
   pushId?: Prisma.PushUncheckedUpdateOneWithoutNotificationNestedInput
 }
 
@@ -525,7 +525,7 @@ export type NotificationsCreateWithoutAuthorInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   emailId?: Prisma.EmailCreateNestedOneWithoutNotificationInput
-  smsId?: Prisma.SMSCreateNestedOneWithoutNotificationInput
+  smsId?: Prisma.SmsCreateNestedOneWithoutNotificationInput
   pushId?: Prisma.PushCreateNestedOneWithoutNotificationInput
 }
 
@@ -537,7 +537,7 @@ export type NotificationsUncheckedCreateWithoutAuthorInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   emailId?: Prisma.EmailUncheckedCreateNestedOneWithoutNotificationInput
-  smsId?: Prisma.SMSUncheckedCreateNestedOneWithoutNotificationInput
+  smsId?: Prisma.SmsUncheckedCreateNestedOneWithoutNotificationInput
   pushId?: Prisma.PushUncheckedCreateNestedOneWithoutNotificationInput
 }
 
@@ -587,7 +587,7 @@ export type NotificationsCreateWithoutEmailIdInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   author: Prisma.UsersCreateNestedOneWithoutNotificationsInput
-  smsId?: Prisma.SMSCreateNestedOneWithoutNotificationInput
+  smsId?: Prisma.SmsCreateNestedOneWithoutNotificationInput
   pushId?: Prisma.PushCreateNestedOneWithoutNotificationInput
 }
 
@@ -599,7 +599,7 @@ export type NotificationsUncheckedCreateWithoutEmailIdInput = {
   authorId: number
   createdAt?: Date | string
   updatedAt?: Date | string
-  smsId?: Prisma.SMSUncheckedCreateNestedOneWithoutNotificationInput
+  smsId?: Prisma.SmsUncheckedCreateNestedOneWithoutNotificationInput
   pushId?: Prisma.PushUncheckedCreateNestedOneWithoutNotificationInput
 }
 
@@ -626,7 +626,7 @@ export type NotificationsUpdateWithoutEmailIdInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   author?: Prisma.UsersUpdateOneRequiredWithoutNotificationsNestedInput
-  smsId?: Prisma.SMSUpdateOneWithoutNotificationNestedInput
+  smsId?: Prisma.SmsUpdateOneWithoutNotificationNestedInput
   pushId?: Prisma.PushUpdateOneWithoutNotificationNestedInput
 }
 
@@ -638,7 +638,7 @@ export type NotificationsUncheckedUpdateWithoutEmailIdInput = {
   authorId?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  smsId?: Prisma.SMSUncheckedUpdateOneWithoutNotificationNestedInput
+  smsId?: Prisma.SmsUncheckedUpdateOneWithoutNotificationNestedInput
   pushId?: Prisma.PushUncheckedUpdateOneWithoutNotificationNestedInput
 }
 
@@ -712,7 +712,7 @@ export type NotificationsCreateWithoutPushIdInput = {
   updatedAt?: Date | string
   author: Prisma.UsersCreateNestedOneWithoutNotificationsInput
   emailId?: Prisma.EmailCreateNestedOneWithoutNotificationInput
-  smsId?: Prisma.SMSCreateNestedOneWithoutNotificationInput
+  smsId?: Prisma.SmsCreateNestedOneWithoutNotificationInput
 }
 
 export type NotificationsUncheckedCreateWithoutPushIdInput = {
@@ -724,7 +724,7 @@ export type NotificationsUncheckedCreateWithoutPushIdInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   emailId?: Prisma.EmailUncheckedCreateNestedOneWithoutNotificationInput
-  smsId?: Prisma.SMSUncheckedCreateNestedOneWithoutNotificationInput
+  smsId?: Prisma.SmsUncheckedCreateNestedOneWithoutNotificationInput
 }
 
 export type NotificationsCreateOrConnectWithoutPushIdInput = {
@@ -751,7 +751,7 @@ export type NotificationsUpdateWithoutPushIdInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   author?: Prisma.UsersUpdateOneRequiredWithoutNotificationsNestedInput
   emailId?: Prisma.EmailUpdateOneWithoutNotificationNestedInput
-  smsId?: Prisma.SMSUpdateOneWithoutNotificationNestedInput
+  smsId?: Prisma.SmsUpdateOneWithoutNotificationNestedInput
 }
 
 export type NotificationsUncheckedUpdateWithoutPushIdInput = {
@@ -763,7 +763,7 @@ export type NotificationsUncheckedUpdateWithoutPushIdInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   emailId?: Prisma.EmailUncheckedUpdateOneWithoutNotificationNestedInput
-  smsId?: Prisma.SMSUncheckedUpdateOneWithoutNotificationNestedInput
+  smsId?: Prisma.SmsUncheckedUpdateOneWithoutNotificationNestedInput
 }
 
 export type NotificationsCreateManyAuthorInput = {
@@ -782,7 +782,7 @@ export type NotificationsUpdateWithoutAuthorInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   emailId?: Prisma.EmailUpdateOneWithoutNotificationNestedInput
-  smsId?: Prisma.SMSUpdateOneWithoutNotificationNestedInput
+  smsId?: Prisma.SmsUpdateOneWithoutNotificationNestedInput
   pushId?: Prisma.PushUpdateOneWithoutNotificationNestedInput
 }
 
@@ -794,7 +794,7 @@ export type NotificationsUncheckedUpdateWithoutAuthorInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   emailId?: Prisma.EmailUncheckedUpdateOneWithoutNotificationNestedInput
-  smsId?: Prisma.SMSUncheckedUpdateOneWithoutNotificationNestedInput
+  smsId?: Prisma.SmsUncheckedUpdateOneWithoutNotificationNestedInput
   pushId?: Prisma.PushUncheckedUpdateOneWithoutNotificationNestedInput
 }
 
@@ -874,7 +874,7 @@ export type $NotificationsPayload<ExtArgs extends runtime.Types.Extensions.Inter
   objects: {
     author: Prisma.$UsersPayload<ExtArgs>
     emailId: Prisma.$EmailPayload<ExtArgs> | null
-    smsId: Prisma.$SMSPayload<ExtArgs> | null
+    smsId: Prisma.$SmsPayload<ExtArgs> | null
     pushId: Prisma.$PushPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1281,7 +1281,7 @@ export interface Prisma__NotificationsClient<T, Null = never, ExtArgs extends ru
   readonly [Symbol.toStringTag]: "PrismaPromise"
   author<T extends Prisma.UsersDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UsersDefaultArgs<ExtArgs>>): Prisma.Prisma__UsersClient<runtime.Types.Result.GetResult<Prisma.$UsersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   emailId<T extends Prisma.Notifications$emailIdArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Notifications$emailIdArgs<ExtArgs>>): Prisma.Prisma__EmailClient<runtime.Types.Result.GetResult<Prisma.$EmailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  smsId<T extends Prisma.Notifications$smsIdArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Notifications$smsIdArgs<ExtArgs>>): Prisma.Prisma__SMSClient<runtime.Types.Result.GetResult<Prisma.$SMSPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  smsId<T extends Prisma.Notifications$smsIdArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Notifications$smsIdArgs<ExtArgs>>): Prisma.Prisma__SmsClient<runtime.Types.Result.GetResult<Prisma.$SmsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   pushId<T extends Prisma.Notifications$pushIdArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Notifications$pushIdArgs<ExtArgs>>): Prisma.Prisma__PushClient<runtime.Types.Result.GetResult<Prisma.$PushPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1743,18 +1743,18 @@ export type Notifications$emailIdArgs<ExtArgs extends runtime.Types.Extensions.I
  */
 export type Notifications$smsIdArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SMS
+   * Select specific fields to fetch from the Sms
    */
-  select?: Prisma.SMSSelect<ExtArgs> | null
+  select?: Prisma.SmsSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the SMS
+   * Omit specific fields from the Sms
    */
-  omit?: Prisma.SMSOmit<ExtArgs> | null
+  omit?: Prisma.SmsOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SMSInclude<ExtArgs> | null
-  where?: Prisma.SMSWhereInput
+  include?: Prisma.SmsInclude<ExtArgs> | null
+  where?: Prisma.SmsWhereInput
 }
 
 /**

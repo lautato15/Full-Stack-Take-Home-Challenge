@@ -1,44 +1,63 @@
-import {
-  BadRequestException,
-  Injectable,
-  NotFoundException,
-} from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
 import { PrismaService } from 'src/prisma.service';
+import { AuthenticatedUser } from 'src/auth/decorators/current-user.decorator';
 
 @Injectable()
 export class NotificationsService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) {}
+
   async createNotification(
     createNotificationDto: CreateNotificationDto,
-    sub: number,
+    user: AuthenticatedUser,
+    sent: boolean,
   ) {
-    switch (createNotificationDto.channel) {
-      case 'EMAIL':
-        console.log('Email por aqui');
-        break;
-      case 'SMS':
-        console.log('SMS por aqui');
-        break;
-      case 'PUSH':
-        console.log('PUSH por aqui');
-        break;
-      default:
-        throw new BadRequestException('Tipo de canal de envío desconocido');
-    }
+    console.log('3 - CreateNotification');
+    const state = sent ? 'enviado' : 'pendiente';
+    console.log(state);
+    const sentAt = sent ? new Date() : null;
     const notification = await this.prisma.notifications.create({
       data: {
         title: createNotificationDto.title,
         content: createNotificationDto.content,
         channel: createNotificationDto.channel,
-        authorId: sub,
+        authorId: user.sub,
       },
     });
-    if (notification)
+    const channels = {
+      EMAIL: this.prisma.email.create({
+        data: {
+          notificationId: notification.id,
+          recipient: createNotificationDto.email!,
+          state: state,
+          sentAt: sentAt,
+        },
+      }),
+      SMS: this.prisma.sms.create({
+        data: {
+          notificationId: notification.id,
+          recipient: Number(createNotificationDto.phone)!,
+          state: state,
+          sentAt: sentAt,
+        },
+      }),
+      PUSH: this.prisma.push.create({
+        data: {
+          notificationId: notification.id,
+          recipient: createNotificationDto.token!,
+          state: state,
+          sentAt: sentAt,
+        },
+      }),
+    };
+    const channel = channels[createNotificationDto.channel];
+
+    if (notification && channel)
       return {
         msg: 'Notificacion creada con exito',
         notification: notification,
+        channel: channel,
       };
     throw new NotFoundException('No se pudo crear la notificacion');
   }

@@ -188,7 +188,7 @@ export type PushGroupByOutputType = {
   notificationId: number
   recipient: string
   state: string
-  sentAt: Date
+  sentAt: Date | null
   _count: PushCountAggregateOutputType | null
   _avg: PushAvgAggregateOutputType | null
   _sum: PushSumAggregateOutputType | null
@@ -219,7 +219,7 @@ export type PushWhereInput = {
   notificationId?: Prisma.IntFilter<"Push"> | number
   recipient?: Prisma.StringFilter<"Push"> | string
   state?: Prisma.StringFilter<"Push"> | string
-  sentAt?: Prisma.DateTimeFilter<"Push"> | Date | string
+  sentAt?: Prisma.DateTimeNullableFilter<"Push"> | Date | string | null
   notification?: Prisma.XOR<Prisma.NotificationsScalarRelationFilter, Prisma.NotificationsWhereInput>
 }
 
@@ -228,7 +228,7 @@ export type PushOrderByWithRelationInput = {
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
   state?: Prisma.SortOrder
-  sentAt?: Prisma.SortOrder
+  sentAt?: Prisma.SortOrderInput | Prisma.SortOrder
   notification?: Prisma.NotificationsOrderByWithRelationInput
 }
 
@@ -240,7 +240,7 @@ export type PushWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.PushWhereInput | Prisma.PushWhereInput[]
   recipient?: Prisma.StringFilter<"Push"> | string
   state?: Prisma.StringFilter<"Push"> | string
-  sentAt?: Prisma.DateTimeFilter<"Push"> | Date | string
+  sentAt?: Prisma.DateTimeNullableFilter<"Push"> | Date | string | null
   notification?: Prisma.XOR<Prisma.NotificationsScalarRelationFilter, Prisma.NotificationsWhereInput>
 }, "id" | "notificationId">
 
@@ -249,7 +249,7 @@ export type PushOrderByWithAggregationInput = {
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
   state?: Prisma.SortOrder
-  sentAt?: Prisma.SortOrder
+  sentAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.PushCountOrderByAggregateInput
   _avg?: Prisma.PushAvgOrderByAggregateInput
   _max?: Prisma.PushMaxOrderByAggregateInput
@@ -265,13 +265,13 @@ export type PushScalarWhereWithAggregatesInput = {
   notificationId?: Prisma.IntWithAggregatesFilter<"Push"> | number
   recipient?: Prisma.StringWithAggregatesFilter<"Push"> | string
   state?: Prisma.StringWithAggregatesFilter<"Push"> | string
-  sentAt?: Prisma.DateTimeWithAggregatesFilter<"Push"> | Date | string
+  sentAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Push"> | Date | string | null
 }
 
 export type PushCreateInput = {
   recipient: string
   state: string
-  sentAt: Date | string
+  sentAt?: Date | string | null
   notification: Prisma.NotificationsCreateNestedOneWithoutPushIdInput
 }
 
@@ -280,13 +280,13 @@ export type PushUncheckedCreateInput = {
   notificationId: number
   recipient: string
   state: string
-  sentAt: Date | string
+  sentAt?: Date | string | null
 }
 
 export type PushUpdateInput = {
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   notification?: Prisma.NotificationsUpdateOneRequiredWithoutPushIdNestedInput
 }
 
@@ -295,7 +295,7 @@ export type PushUncheckedUpdateInput = {
   notificationId?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type PushCreateManyInput = {
@@ -303,13 +303,13 @@ export type PushCreateManyInput = {
   notificationId: number
   recipient: string
   state: string
-  sentAt: Date | string
+  sentAt?: Date | string | null
 }
 
 export type PushUpdateManyMutationInput = {
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type PushUncheckedUpdateManyInput = {
@@ -317,7 +317,7 @@ export type PushUncheckedUpdateManyInput = {
   notificationId?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type PushNullableScalarRelationFilter = {
@@ -394,14 +394,14 @@ export type PushUncheckedUpdateOneWithoutNotificationNestedInput = {
 export type PushCreateWithoutNotificationInput = {
   recipient: string
   state: string
-  sentAt: Date | string
+  sentAt?: Date | string | null
 }
 
 export type PushUncheckedCreateWithoutNotificationInput = {
   id?: number
   recipient: string
   state: string
-  sentAt: Date | string
+  sentAt?: Date | string | null
 }
 
 export type PushCreateOrConnectWithoutNotificationInput = {
@@ -423,14 +423,14 @@ export type PushUpdateToOneWithWhereWithoutNotificationInput = {
 export type PushUpdateWithoutNotificationInput = {
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type PushUncheckedUpdateWithoutNotificationInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -491,7 +491,7 @@ export type $PushPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     notificationId: number
     recipient: string
     state: string
-    sentAt: Date
+    sentAt: Date | null
   }, ExtArgs["result"]["push"]>
   composites: {}
 }

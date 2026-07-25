@@ -188,7 +188,7 @@ export type EmailGroupByOutputType = {
   notificationId: number
   recipient: string
   state: string
-  sentAt: Date
+  sentAt: Date | null
   _count: EmailCountAggregateOutputType | null
   _avg: EmailAvgAggregateOutputType | null
   _sum: EmailSumAggregateOutputType | null
@@ -219,7 +219,7 @@ export type EmailWhereInput = {
   notificationId?: Prisma.IntFilter<"Email"> | number
   recipient?: Prisma.StringFilter<"Email"> | string
   state?: Prisma.StringFilter<"Email"> | string
-  sentAt?: Prisma.DateTimeFilter<"Email"> | Date | string
+  sentAt?: Prisma.DateTimeNullableFilter<"Email"> | Date | string | null
   notification?: Prisma.XOR<Prisma.NotificationsScalarRelationFilter, Prisma.NotificationsWhereInput>
 }
 
@@ -228,7 +228,7 @@ export type EmailOrderByWithRelationInput = {
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
   state?: Prisma.SortOrder
-  sentAt?: Prisma.SortOrder
+  sentAt?: Prisma.SortOrderInput | Prisma.SortOrder
   notification?: Prisma.NotificationsOrderByWithRelationInput
 }
 
@@ -240,7 +240,7 @@ export type EmailWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.EmailWhereInput | Prisma.EmailWhereInput[]
   recipient?: Prisma.StringFilter<"Email"> | string
   state?: Prisma.StringFilter<"Email"> | string
-  sentAt?: Prisma.DateTimeFilter<"Email"> | Date | string
+  sentAt?: Prisma.DateTimeNullableFilter<"Email"> | Date | string | null
   notification?: Prisma.XOR<Prisma.NotificationsScalarRelationFilter, Prisma.NotificationsWhereInput>
 }, "id" | "notificationId">
 
@@ -249,7 +249,7 @@ export type EmailOrderByWithAggregationInput = {
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
   state?: Prisma.SortOrder
-  sentAt?: Prisma.SortOrder
+  sentAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.EmailCountOrderByAggregateInput
   _avg?: Prisma.EmailAvgOrderByAggregateInput
   _max?: Prisma.EmailMaxOrderByAggregateInput
@@ -265,13 +265,13 @@ export type EmailScalarWhereWithAggregatesInput = {
   notificationId?: Prisma.IntWithAggregatesFilter<"Email"> | number
   recipient?: Prisma.StringWithAggregatesFilter<"Email"> | string
   state?: Prisma.StringWithAggregatesFilter<"Email"> | string
-  sentAt?: Prisma.DateTimeWithAggregatesFilter<"Email"> | Date | string
+  sentAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Email"> | Date | string | null
 }
 
 export type EmailCreateInput = {
   recipient: string
   state: string
-  sentAt: Date | string
+  sentAt?: Date | string | null
   notification: Prisma.NotificationsCreateNestedOneWithoutEmailIdInput
 }
 
@@ -280,13 +280,13 @@ export type EmailUncheckedCreateInput = {
   notificationId: number
   recipient: string
   state: string
-  sentAt: Date | string
+  sentAt?: Date | string | null
 }
 
 export type EmailUpdateInput = {
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   notification?: Prisma.NotificationsUpdateOneRequiredWithoutEmailIdNestedInput
 }
 
@@ -295,7 +295,7 @@ export type EmailUncheckedUpdateInput = {
   notificationId?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type EmailCreateManyInput = {
@@ -303,13 +303,13 @@ export type EmailCreateManyInput = {
   notificationId: number
   recipient: string
   state: string
-  sentAt: Date | string
+  sentAt?: Date | string | null
 }
 
 export type EmailUpdateManyMutationInput = {
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type EmailUncheckedUpdateManyInput = {
@@ -317,7 +317,7 @@ export type EmailUncheckedUpdateManyInput = {
   notificationId?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type EmailNullableScalarRelationFilter = {
@@ -391,17 +391,21 @@ export type EmailUncheckedUpdateOneWithoutNotificationNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.EmailUpdateToOneWithWhereWithoutNotificationInput, Prisma.EmailUpdateWithoutNotificationInput>, Prisma.EmailUncheckedUpdateWithoutNotificationInput>
 }
 
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
+}
+
 export type EmailCreateWithoutNotificationInput = {
   recipient: string
   state: string
-  sentAt: Date | string
+  sentAt?: Date | string | null
 }
 
 export type EmailUncheckedCreateWithoutNotificationInput = {
   id?: number
   recipient: string
   state: string
-  sentAt: Date | string
+  sentAt?: Date | string | null
 }
 
 export type EmailCreateOrConnectWithoutNotificationInput = {
@@ -423,14 +427,14 @@ export type EmailUpdateToOneWithWhereWithoutNotificationInput = {
 export type EmailUpdateWithoutNotificationInput = {
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type EmailUncheckedUpdateWithoutNotificationInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -491,7 +495,7 @@ export type $EmailPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     notificationId: number
     recipient: string
     state: string
-    sentAt: Date
+    sentAt: Date | null
   }, ExtArgs["result"]["email"]>
   composites: {}
 }

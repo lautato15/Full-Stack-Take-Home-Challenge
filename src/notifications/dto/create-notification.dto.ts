@@ -4,8 +4,11 @@ import {
   isMobilePhone,
   IsMobilePhone,
   IsNotEmpty,
+  IsNumberString,
+  IsOptional,
   IsString,
   Length,
+  Min,
   MinLength,
 } from 'class-validator';
 
@@ -22,13 +25,18 @@ export class CreateNotificationDto {
   @IsIn(['EMAIL', 'SMS', 'PUSH'])
   channel!: string;
 
+  @IsOptional()
   @IsEmail()
   email?: string;
 
+  @IsOptional()
+  @IsNumberString()
   @IsMobilePhone()
+  @Min(8)
   phone?: string;
 
+  @IsOptional()
   @IsString()
-  @MinLength(10)
+  @MinLength(15)
   token?: string;
 }

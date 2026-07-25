@@ -54,7 +54,7 @@ export const ModelName = {
   Users: 'Users',
   Notifications: 'Notifications',
   Email: 'Email',
-  SMS: 'SMS',
+  Sms: 'Sms',
   Push: 'Push'
 } as const
 
@@ -110,7 +110,7 @@ export const EmailScalarFieldEnum = {
 export type EmailScalarFieldEnum = (typeof EmailScalarFieldEnum)[keyof typeof EmailScalarFieldEnum]
 
 
-export const SMSScalarFieldEnum = {
+export const SmsScalarFieldEnum = {
   id: 'id',
   notificationId: 'notificationId',
   recipient: 'recipient',
@@ -118,7 +118,7 @@ export const SMSScalarFieldEnum = {
   sentAt: 'sentAt'
 } as const
 
-export type SMSScalarFieldEnum = (typeof SMSScalarFieldEnum)[keyof typeof SMSScalarFieldEnum]
+export type SmsScalarFieldEnum = (typeof SmsScalarFieldEnum)[keyof typeof SmsScalarFieldEnum]
 
 
 export const PushScalarFieldEnum = {

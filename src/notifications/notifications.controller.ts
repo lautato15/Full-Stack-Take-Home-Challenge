@@ -1,22 +1,59 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  BadRequestException,
+} from '@nestjs/common';
 import { NotificationsService } from './notifications.service';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
-import { CurrentUser } from 'src/auth/decorators/current-user.decorator';
+import {
+  AuthenticatedUser,
+  CurrentUser,
+} from 'src/auth/decorators/current-user.decorator';
+import { EmailService } from './email/email.service';
+import { SmsService } from './sms/sms.service';
+import { PushService } from './push/push.service';
 
 @Controller('notifications')
 export class NotificationsController {
-  constructor(private readonly notificationsService: NotificationsService) {}
+  constructor(
+    private readonly notificationsService: NotificationsService,
+    private readonly emailService: EmailService,
+    private readonly smsService: SmsService,
+    private readonly pushService: PushService,
+  ) {}
 
   @Post()
   createNotification(
     @Body() createNotificationDto: CreateNotificationDto,
-    @CurrentUser() sub: number,
+    @CurrentUser() user: AuthenticatedUser,
   ) {
-    return this.notificationsService.createNotification(
-      createNotificationDto,
-      sub,
-    );
+    switch (createNotificationDto.channel) {
+      case 'EMAIL':
+        if (createNotificationDto.email)
+          return this.emailService.sendEmail(createNotificationDto, user);
+        throw new BadRequestException('No hay un email asignado');
+      case 'SMS':
+        if (createNotificationDto.phone)
+          return this.smsService.sendSMS(createNotificationDto, user);
+        throw new BadRequestException('No hay un numero telefónico asignado');
+      case 'PUSH':
+        if (createNotificationDto.token)
+          return this.smsService.sendSMS(createNotificationDto, user);
+        throw new BadRequestException('No hay un numero telefónico asignado');
+        break;
+      default:
+        throw new BadRequestException('Tipo de canal de envío desconocido');
+    }
+    // return this.notificationsService.createNotification(
+    //   createNotificationDto,
+    //   user,
+    // );
   }
 
   @Get()

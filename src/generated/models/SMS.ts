@@ -4,7 +4,7 @@
 // biome-ignore-all lint: generated file
 // @ts-nocheck 
 /*
- * This file exports the `SMS` model and its related types.
+ * This file exports the `Sms` model and its related types.
  *
  * 🟢 You can import this file directly.
  */
@@ -13,40 +13,32 @@ import type * as $Enums from "../enums"
 import type * as Prisma from "../internal/prismaNamespace"
 
 /**
- * Model SMS
+ * Model Sms
  * 
  */
-export type SMSModel = runtime.Types.Result.DefaultSelection<Prisma.$SMSPayload>
+export type SmsModel = runtime.Types.Result.DefaultSelection<Prisma.$SmsPayload>
 
-export type AggregateSMS = {
-  _count: SMSCountAggregateOutputType | null
-  _avg: SMSAvgAggregateOutputType | null
-  _sum: SMSSumAggregateOutputType | null
-  _min: SMSMinAggregateOutputType | null
-  _max: SMSMaxAggregateOutputType | null
+export type AggregateSms = {
+  _count: SmsCountAggregateOutputType | null
+  _avg: SmsAvgAggregateOutputType | null
+  _sum: SmsSumAggregateOutputType | null
+  _min: SmsMinAggregateOutputType | null
+  _max: SmsMaxAggregateOutputType | null
 }
 
-export type SMSAvgAggregateOutputType = {
+export type SmsAvgAggregateOutputType = {
   id: number | null
   notificationId: number | null
   recipient: number | null
 }
 
-export type SMSSumAggregateOutputType = {
+export type SmsSumAggregateOutputType = {
   id: number | null
   notificationId: number | null
   recipient: number | null
 }
 
-export type SMSMinAggregateOutputType = {
-  id: number | null
-  notificationId: number | null
-  recipient: number | null
-  state: string | null
-  sentAt: Date | null
-}
-
-export type SMSMaxAggregateOutputType = {
+export type SmsMinAggregateOutputType = {
   id: number | null
   notificationId: number | null
   recipient: number | null
@@ -54,7 +46,15 @@ export type SMSMaxAggregateOutputType = {
   sentAt: Date | null
 }
 
-export type SMSCountAggregateOutputType = {
+export type SmsMaxAggregateOutputType = {
+  id: number | null
+  notificationId: number | null
+  recipient: number | null
+  state: string | null
+  sentAt: Date | null
+}
+
+export type SmsCountAggregateOutputType = {
   id: number
   notificationId: number
   recipient: number
@@ -64,27 +64,19 @@ export type SMSCountAggregateOutputType = {
 }
 
 
-export type SMSAvgAggregateInputType = {
+export type SmsAvgAggregateInputType = {
   id?: true
   notificationId?: true
   recipient?: true
 }
 
-export type SMSSumAggregateInputType = {
+export type SmsSumAggregateInputType = {
   id?: true
   notificationId?: true
   recipient?: true
 }
 
-export type SMSMinAggregateInputType = {
-  id?: true
-  notificationId?: true
-  recipient?: true
-  state?: true
-  sentAt?: true
-}
-
-export type SMSMaxAggregateInputType = {
+export type SmsMinAggregateInputType = {
   id?: true
   notificationId?: true
   recipient?: true
@@ -92,7 +84,15 @@ export type SMSMaxAggregateInputType = {
   sentAt?: true
 }
 
-export type SMSCountAggregateInputType = {
+export type SmsMaxAggregateInputType = {
+  id?: true
+  notificationId?: true
+  recipient?: true
+  state?: true
+  sentAt?: true
+}
+
+export type SmsCountAggregateInputType = {
   id?: true
   notificationId?: true
   recipient?: true
@@ -101,235 +101,235 @@ export type SMSCountAggregateInputType = {
   _all?: true
 }
 
-export type SMSAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which SMS to aggregate.
+   * Filter which Sms to aggregate.
    */
-  where?: Prisma.SMSWhereInput
+  where?: Prisma.SmsWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of SMS to fetch.
+   * Determine the order of Sms to fetch.
    */
-  orderBy?: Prisma.SMSOrderByWithRelationInput | Prisma.SMSOrderByWithRelationInput[]
+  orderBy?: Prisma.SmsOrderByWithRelationInput | Prisma.SmsOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
    * Sets the start position
    */
-  cursor?: Prisma.SMSWhereUniqueInput
+  cursor?: Prisma.SmsWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` SMS from the position of the cursor.
+   * Take `±n` Sms from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` SMS.
+   * Skip the first `n` Sms.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
-   * Count returned SMS
+   * Count returned Sms
   **/
-  _count?: true | SMSCountAggregateInputType
+  _count?: true | SmsCountAggregateInputType
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
    * Select which fields to average
   **/
-  _avg?: SMSAvgAggregateInputType
+  _avg?: SmsAvgAggregateInputType
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
    * Select which fields to sum
   **/
-  _sum?: SMSSumAggregateInputType
+  _sum?: SmsSumAggregateInputType
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
    * Select which fields to find the minimum value
   **/
-  _min?: SMSMinAggregateInputType
+  _min?: SmsMinAggregateInputType
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
    * Select which fields to find the maximum value
   **/
-  _max?: SMSMaxAggregateInputType
+  _max?: SmsMaxAggregateInputType
 }
 
-export type GetSMSAggregateType<T extends SMSAggregateArgs> = {
-      [P in keyof T & keyof AggregateSMS]: P extends '_count' | 'count'
+export type GetSmsAggregateType<T extends SmsAggregateArgs> = {
+      [P in keyof T & keyof AggregateSms]: P extends '_count' | 'count'
     ? T[P] extends true
       ? number
-      : Prisma.GetScalarType<T[P], AggregateSMS[P]>
-    : Prisma.GetScalarType<T[P], AggregateSMS[P]>
+      : Prisma.GetScalarType<T[P], AggregateSms[P]>
+    : Prisma.GetScalarType<T[P], AggregateSms[P]>
 }
 
 
 
 
-export type SMSGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.SMSWhereInput
-  orderBy?: Prisma.SMSOrderByWithAggregationInput | Prisma.SMSOrderByWithAggregationInput[]
-  by: Prisma.SMSScalarFieldEnum[] | Prisma.SMSScalarFieldEnum
-  having?: Prisma.SMSScalarWhereWithAggregatesInput
+export type SmsGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SmsWhereInput
+  orderBy?: Prisma.SmsOrderByWithAggregationInput | Prisma.SmsOrderByWithAggregationInput[]
+  by: Prisma.SmsScalarFieldEnum[] | Prisma.SmsScalarFieldEnum
+  having?: Prisma.SmsScalarWhereWithAggregatesInput
   take?: number
   skip?: number
-  _count?: SMSCountAggregateInputType | true
-  _avg?: SMSAvgAggregateInputType
-  _sum?: SMSSumAggregateInputType
-  _min?: SMSMinAggregateInputType
-  _max?: SMSMaxAggregateInputType
+  _count?: SmsCountAggregateInputType | true
+  _avg?: SmsAvgAggregateInputType
+  _sum?: SmsSumAggregateInputType
+  _min?: SmsMinAggregateInputType
+  _max?: SmsMaxAggregateInputType
 }
 
-export type SMSGroupByOutputType = {
+export type SmsGroupByOutputType = {
   id: number
   notificationId: number
   recipient: number
   state: string
-  sentAt: Date
-  _count: SMSCountAggregateOutputType | null
-  _avg: SMSAvgAggregateOutputType | null
-  _sum: SMSSumAggregateOutputType | null
-  _min: SMSMinAggregateOutputType | null
-  _max: SMSMaxAggregateOutputType | null
+  sentAt: Date | null
+  _count: SmsCountAggregateOutputType | null
+  _avg: SmsAvgAggregateOutputType | null
+  _sum: SmsSumAggregateOutputType | null
+  _min: SmsMinAggregateOutputType | null
+  _max: SmsMaxAggregateOutputType | null
 }
 
-export type GetSMSGroupByPayload<T extends SMSGroupByArgs> = Prisma.PrismaPromise<
+export type GetSmsGroupByPayload<T extends SmsGroupByArgs> = Prisma.PrismaPromise<
   Array<
-    Prisma.PickEnumerable<SMSGroupByOutputType, T['by']> &
+    Prisma.PickEnumerable<SmsGroupByOutputType, T['by']> &
       {
-        [P in ((keyof T) & (keyof SMSGroupByOutputType))]: P extends '_count'
+        [P in ((keyof T) & (keyof SmsGroupByOutputType))]: P extends '_count'
           ? T[P] extends boolean
             ? number
-            : Prisma.GetScalarType<T[P], SMSGroupByOutputType[P]>
-          : Prisma.GetScalarType<T[P], SMSGroupByOutputType[P]>
+            : Prisma.GetScalarType<T[P], SmsGroupByOutputType[P]>
+          : Prisma.GetScalarType<T[P], SmsGroupByOutputType[P]>
       }
     >
   >
 
 
 
-export type SMSWhereInput = {
-  AND?: Prisma.SMSWhereInput | Prisma.SMSWhereInput[]
-  OR?: Prisma.SMSWhereInput[]
-  NOT?: Prisma.SMSWhereInput | Prisma.SMSWhereInput[]
-  id?: Prisma.IntFilter<"SMS"> | number
-  notificationId?: Prisma.IntFilter<"SMS"> | number
-  recipient?: Prisma.IntFilter<"SMS"> | number
-  state?: Prisma.StringFilter<"SMS"> | string
-  sentAt?: Prisma.DateTimeFilter<"SMS"> | Date | string
+export type SmsWhereInput = {
+  AND?: Prisma.SmsWhereInput | Prisma.SmsWhereInput[]
+  OR?: Prisma.SmsWhereInput[]
+  NOT?: Prisma.SmsWhereInput | Prisma.SmsWhereInput[]
+  id?: Prisma.IntFilter<"Sms"> | number
+  notificationId?: Prisma.IntFilter<"Sms"> | number
+  recipient?: Prisma.IntFilter<"Sms"> | number
+  state?: Prisma.StringFilter<"Sms"> | string
+  sentAt?: Prisma.DateTimeNullableFilter<"Sms"> | Date | string | null
   notification?: Prisma.XOR<Prisma.NotificationsScalarRelationFilter, Prisma.NotificationsWhereInput>
 }
 
-export type SMSOrderByWithRelationInput = {
+export type SmsOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
   state?: Prisma.SortOrder
-  sentAt?: Prisma.SortOrder
+  sentAt?: Prisma.SortOrderInput | Prisma.SortOrder
   notification?: Prisma.NotificationsOrderByWithRelationInput
 }
 
-export type SMSWhereUniqueInput = Prisma.AtLeast<{
+export type SmsWhereUniqueInput = Prisma.AtLeast<{
   id?: number
   notificationId?: number
-  AND?: Prisma.SMSWhereInput | Prisma.SMSWhereInput[]
-  OR?: Prisma.SMSWhereInput[]
-  NOT?: Prisma.SMSWhereInput | Prisma.SMSWhereInput[]
-  recipient?: Prisma.IntFilter<"SMS"> | number
-  state?: Prisma.StringFilter<"SMS"> | string
-  sentAt?: Prisma.DateTimeFilter<"SMS"> | Date | string
+  AND?: Prisma.SmsWhereInput | Prisma.SmsWhereInput[]
+  OR?: Prisma.SmsWhereInput[]
+  NOT?: Prisma.SmsWhereInput | Prisma.SmsWhereInput[]
+  recipient?: Prisma.IntFilter<"Sms"> | number
+  state?: Prisma.StringFilter<"Sms"> | string
+  sentAt?: Prisma.DateTimeNullableFilter<"Sms"> | Date | string | null
   notification?: Prisma.XOR<Prisma.NotificationsScalarRelationFilter, Prisma.NotificationsWhereInput>
 }, "id" | "notificationId">
 
-export type SMSOrderByWithAggregationInput = {
+export type SmsOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
   state?: Prisma.SortOrder
-  sentAt?: Prisma.SortOrder
-  _count?: Prisma.SMSCountOrderByAggregateInput
-  _avg?: Prisma.SMSAvgOrderByAggregateInput
-  _max?: Prisma.SMSMaxOrderByAggregateInput
-  _min?: Prisma.SMSMinOrderByAggregateInput
-  _sum?: Prisma.SMSSumOrderByAggregateInput
+  sentAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  _count?: Prisma.SmsCountOrderByAggregateInput
+  _avg?: Prisma.SmsAvgOrderByAggregateInput
+  _max?: Prisma.SmsMaxOrderByAggregateInput
+  _min?: Prisma.SmsMinOrderByAggregateInput
+  _sum?: Prisma.SmsSumOrderByAggregateInput
 }
 
-export type SMSScalarWhereWithAggregatesInput = {
-  AND?: Prisma.SMSScalarWhereWithAggregatesInput | Prisma.SMSScalarWhereWithAggregatesInput[]
-  OR?: Prisma.SMSScalarWhereWithAggregatesInput[]
-  NOT?: Prisma.SMSScalarWhereWithAggregatesInput | Prisma.SMSScalarWhereWithAggregatesInput[]
-  id?: Prisma.IntWithAggregatesFilter<"SMS"> | number
-  notificationId?: Prisma.IntWithAggregatesFilter<"SMS"> | number
-  recipient?: Prisma.IntWithAggregatesFilter<"SMS"> | number
-  state?: Prisma.StringWithAggregatesFilter<"SMS"> | string
-  sentAt?: Prisma.DateTimeWithAggregatesFilter<"SMS"> | Date | string
+export type SmsScalarWhereWithAggregatesInput = {
+  AND?: Prisma.SmsScalarWhereWithAggregatesInput | Prisma.SmsScalarWhereWithAggregatesInput[]
+  OR?: Prisma.SmsScalarWhereWithAggregatesInput[]
+  NOT?: Prisma.SmsScalarWhereWithAggregatesInput | Prisma.SmsScalarWhereWithAggregatesInput[]
+  id?: Prisma.IntWithAggregatesFilter<"Sms"> | number
+  notificationId?: Prisma.IntWithAggregatesFilter<"Sms"> | number
+  recipient?: Prisma.IntWithAggregatesFilter<"Sms"> | number
+  state?: Prisma.StringWithAggregatesFilter<"Sms"> | string
+  sentAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Sms"> | Date | string | null
 }
 
-export type SMSCreateInput = {
+export type SmsCreateInput = {
   recipient: number
   state: string
-  sentAt: Date | string
+  sentAt?: Date | string | null
   notification: Prisma.NotificationsCreateNestedOneWithoutSmsIdInput
 }
 
-export type SMSUncheckedCreateInput = {
+export type SmsUncheckedCreateInput = {
   id?: number
   notificationId: number
   recipient: number
   state: string
-  sentAt: Date | string
+  sentAt?: Date | string | null
 }
 
-export type SMSUpdateInput = {
+export type SmsUpdateInput = {
   recipient?: Prisma.IntFieldUpdateOperationsInput | number
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   notification?: Prisma.NotificationsUpdateOneRequiredWithoutSmsIdNestedInput
 }
 
-export type SMSUncheckedUpdateInput = {
+export type SmsUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   notificationId?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.IntFieldUpdateOperationsInput | number
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
-export type SMSCreateManyInput = {
+export type SmsCreateManyInput = {
   id?: number
   notificationId: number
   recipient: number
   state: string
-  sentAt: Date | string
+  sentAt?: Date | string | null
 }
 
-export type SMSUpdateManyMutationInput = {
+export type SmsUpdateManyMutationInput = {
   recipient?: Prisma.IntFieldUpdateOperationsInput | number
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
-export type SMSUncheckedUpdateManyInput = {
+export type SmsUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   notificationId?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.IntFieldUpdateOperationsInput | number
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
-export type SMSNullableScalarRelationFilter = {
-  is?: Prisma.SMSWhereInput | null
-  isNot?: Prisma.SMSWhereInput | null
+export type SmsNullableScalarRelationFilter = {
+  is?: Prisma.SmsWhereInput | null
+  isNot?: Prisma.SmsWhereInput | null
 }
 
-export type SMSCountOrderByAggregateInput = {
+export type SmsCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
@@ -337,21 +337,13 @@ export type SMSCountOrderByAggregateInput = {
   sentAt?: Prisma.SortOrder
 }
 
-export type SMSAvgOrderByAggregateInput = {
+export type SmsAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
 }
 
-export type SMSMaxOrderByAggregateInput = {
-  id?: Prisma.SortOrder
-  notificationId?: Prisma.SortOrder
-  recipient?: Prisma.SortOrder
-  state?: Prisma.SortOrder
-  sentAt?: Prisma.SortOrder
-}
-
-export type SMSMinOrderByAggregateInput = {
+export type SmsMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
@@ -359,116 +351,124 @@ export type SMSMinOrderByAggregateInput = {
   sentAt?: Prisma.SortOrder
 }
 
-export type SMSSumOrderByAggregateInput = {
+export type SmsMinOrderByAggregateInput = {
+  id?: Prisma.SortOrder
+  notificationId?: Prisma.SortOrder
+  recipient?: Prisma.SortOrder
+  state?: Prisma.SortOrder
+  sentAt?: Prisma.SortOrder
+}
+
+export type SmsSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
 }
 
-export type SMSCreateNestedOneWithoutNotificationInput = {
-  create?: Prisma.XOR<Prisma.SMSCreateWithoutNotificationInput, Prisma.SMSUncheckedCreateWithoutNotificationInput>
-  connectOrCreate?: Prisma.SMSCreateOrConnectWithoutNotificationInput
-  connect?: Prisma.SMSWhereUniqueInput
+export type SmsCreateNestedOneWithoutNotificationInput = {
+  create?: Prisma.XOR<Prisma.SmsCreateWithoutNotificationInput, Prisma.SmsUncheckedCreateWithoutNotificationInput>
+  connectOrCreate?: Prisma.SmsCreateOrConnectWithoutNotificationInput
+  connect?: Prisma.SmsWhereUniqueInput
 }
 
-export type SMSUncheckedCreateNestedOneWithoutNotificationInput = {
-  create?: Prisma.XOR<Prisma.SMSCreateWithoutNotificationInput, Prisma.SMSUncheckedCreateWithoutNotificationInput>
-  connectOrCreate?: Prisma.SMSCreateOrConnectWithoutNotificationInput
-  connect?: Prisma.SMSWhereUniqueInput
+export type SmsUncheckedCreateNestedOneWithoutNotificationInput = {
+  create?: Prisma.XOR<Prisma.SmsCreateWithoutNotificationInput, Prisma.SmsUncheckedCreateWithoutNotificationInput>
+  connectOrCreate?: Prisma.SmsCreateOrConnectWithoutNotificationInput
+  connect?: Prisma.SmsWhereUniqueInput
 }
 
-export type SMSUpdateOneWithoutNotificationNestedInput = {
-  create?: Prisma.XOR<Prisma.SMSCreateWithoutNotificationInput, Prisma.SMSUncheckedCreateWithoutNotificationInput>
-  connectOrCreate?: Prisma.SMSCreateOrConnectWithoutNotificationInput
-  upsert?: Prisma.SMSUpsertWithoutNotificationInput
-  disconnect?: Prisma.SMSWhereInput | boolean
-  delete?: Prisma.SMSWhereInput | boolean
-  connect?: Prisma.SMSWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.SMSUpdateToOneWithWhereWithoutNotificationInput, Prisma.SMSUpdateWithoutNotificationInput>, Prisma.SMSUncheckedUpdateWithoutNotificationInput>
+export type SmsUpdateOneWithoutNotificationNestedInput = {
+  create?: Prisma.XOR<Prisma.SmsCreateWithoutNotificationInput, Prisma.SmsUncheckedCreateWithoutNotificationInput>
+  connectOrCreate?: Prisma.SmsCreateOrConnectWithoutNotificationInput
+  upsert?: Prisma.SmsUpsertWithoutNotificationInput
+  disconnect?: Prisma.SmsWhereInput | boolean
+  delete?: Prisma.SmsWhereInput | boolean
+  connect?: Prisma.SmsWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SmsUpdateToOneWithWhereWithoutNotificationInput, Prisma.SmsUpdateWithoutNotificationInput>, Prisma.SmsUncheckedUpdateWithoutNotificationInput>
 }
 
-export type SMSUncheckedUpdateOneWithoutNotificationNestedInput = {
-  create?: Prisma.XOR<Prisma.SMSCreateWithoutNotificationInput, Prisma.SMSUncheckedCreateWithoutNotificationInput>
-  connectOrCreate?: Prisma.SMSCreateOrConnectWithoutNotificationInput
-  upsert?: Prisma.SMSUpsertWithoutNotificationInput
-  disconnect?: Prisma.SMSWhereInput | boolean
-  delete?: Prisma.SMSWhereInput | boolean
-  connect?: Prisma.SMSWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.SMSUpdateToOneWithWhereWithoutNotificationInput, Prisma.SMSUpdateWithoutNotificationInput>, Prisma.SMSUncheckedUpdateWithoutNotificationInput>
+export type SmsUncheckedUpdateOneWithoutNotificationNestedInput = {
+  create?: Prisma.XOR<Prisma.SmsCreateWithoutNotificationInput, Prisma.SmsUncheckedCreateWithoutNotificationInput>
+  connectOrCreate?: Prisma.SmsCreateOrConnectWithoutNotificationInput
+  upsert?: Prisma.SmsUpsertWithoutNotificationInput
+  disconnect?: Prisma.SmsWhereInput | boolean
+  delete?: Prisma.SmsWhereInput | boolean
+  connect?: Prisma.SmsWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.SmsUpdateToOneWithWhereWithoutNotificationInput, Prisma.SmsUpdateWithoutNotificationInput>, Prisma.SmsUncheckedUpdateWithoutNotificationInput>
 }
 
-export type SMSCreateWithoutNotificationInput = {
+export type SmsCreateWithoutNotificationInput = {
   recipient: number
   state: string
-  sentAt: Date | string
+  sentAt?: Date | string | null
 }
 
-export type SMSUncheckedCreateWithoutNotificationInput = {
+export type SmsUncheckedCreateWithoutNotificationInput = {
   id?: number
   recipient: number
   state: string
-  sentAt: Date | string
+  sentAt?: Date | string | null
 }
 
-export type SMSCreateOrConnectWithoutNotificationInput = {
-  where: Prisma.SMSWhereUniqueInput
-  create: Prisma.XOR<Prisma.SMSCreateWithoutNotificationInput, Prisma.SMSUncheckedCreateWithoutNotificationInput>
+export type SmsCreateOrConnectWithoutNotificationInput = {
+  where: Prisma.SmsWhereUniqueInput
+  create: Prisma.XOR<Prisma.SmsCreateWithoutNotificationInput, Prisma.SmsUncheckedCreateWithoutNotificationInput>
 }
 
-export type SMSUpsertWithoutNotificationInput = {
-  update: Prisma.XOR<Prisma.SMSUpdateWithoutNotificationInput, Prisma.SMSUncheckedUpdateWithoutNotificationInput>
-  create: Prisma.XOR<Prisma.SMSCreateWithoutNotificationInput, Prisma.SMSUncheckedCreateWithoutNotificationInput>
-  where?: Prisma.SMSWhereInput
+export type SmsUpsertWithoutNotificationInput = {
+  update: Prisma.XOR<Prisma.SmsUpdateWithoutNotificationInput, Prisma.SmsUncheckedUpdateWithoutNotificationInput>
+  create: Prisma.XOR<Prisma.SmsCreateWithoutNotificationInput, Prisma.SmsUncheckedCreateWithoutNotificationInput>
+  where?: Prisma.SmsWhereInput
 }
 
-export type SMSUpdateToOneWithWhereWithoutNotificationInput = {
-  where?: Prisma.SMSWhereInput
-  data: Prisma.XOR<Prisma.SMSUpdateWithoutNotificationInput, Prisma.SMSUncheckedUpdateWithoutNotificationInput>
+export type SmsUpdateToOneWithWhereWithoutNotificationInput = {
+  where?: Prisma.SmsWhereInput
+  data: Prisma.XOR<Prisma.SmsUpdateWithoutNotificationInput, Prisma.SmsUncheckedUpdateWithoutNotificationInput>
 }
 
-export type SMSUpdateWithoutNotificationInput = {
+export type SmsUpdateWithoutNotificationInput = {
   recipient?: Prisma.IntFieldUpdateOperationsInput | number
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
-export type SMSUncheckedUpdateWithoutNotificationInput = {
+export type SmsUncheckedUpdateWithoutNotificationInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.IntFieldUpdateOperationsInput | number
   state?: Prisma.StringFieldUpdateOperationsInput | string
-  sentAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
 
-export type SMSSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type SmsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   notificationId?: boolean
   recipient?: boolean
   state?: boolean
   sentAt?: boolean
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
-}, ExtArgs["result"]["sMS"]>
+}, ExtArgs["result"]["sms"]>
 
-export type SMSSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type SmsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   notificationId?: boolean
   recipient?: boolean
   state?: boolean
   sentAt?: boolean
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
-}, ExtArgs["result"]["sMS"]>
+}, ExtArgs["result"]["sms"]>
 
-export type SMSSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+export type SmsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   notificationId?: boolean
   recipient?: boolean
   state?: boolean
   sentAt?: boolean
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
-}, ExtArgs["result"]["sMS"]>
+}, ExtArgs["result"]["sms"]>
 
-export type SMSSelectScalar = {
+export type SmsSelectScalar = {
   id?: boolean
   notificationId?: boolean
   recipient?: boolean
@@ -476,19 +476,19 @@ export type SMSSelectScalar = {
   sentAt?: boolean
 }
 
-export type SMSOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "notificationId" | "recipient" | "state" | "sentAt", ExtArgs["result"]["sMS"]>
-export type SMSInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "notificationId" | "recipient" | "state" | "sentAt", ExtArgs["result"]["sms"]>
+export type SmsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
 }
-export type SMSIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
 }
-export type SMSIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
 }
 
-export type $SMSPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  name: "SMS"
+export type $SmsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  name: "Sms"
   objects: {
     notification: Prisma.$NotificationsPayload<ExtArgs>
   }
@@ -497,137 +497,137 @@ export type $SMSPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     notificationId: number
     recipient: number
     state: string
-    sentAt: Date
-  }, ExtArgs["result"]["sMS"]>
+    sentAt: Date | null
+  }, ExtArgs["result"]["sms"]>
   composites: {}
 }
 
-export type SMSGetPayload<S extends boolean | null | undefined | SMSDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$SMSPayload, S>
+export type SmsGetPayload<S extends boolean | null | undefined | SmsDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$SmsPayload, S>
 
-export type SMSCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
-  Omit<SMSFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-    select?: SMSCountAggregateInputType | true
+export type SmsCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> =
+  Omit<SmsFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: SmsCountAggregateInputType | true
   }
 
-export interface SMSDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SMS'], meta: { name: 'SMS' } }
+export interface SmsDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+  [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Sms'], meta: { name: 'Sms' } }
   /**
-   * Find zero or one SMS that matches the filter.
-   * @param {SMSFindUniqueArgs} args - Arguments to find a SMS
+   * Find zero or one Sms that matches the filter.
+   * @param {SmsFindUniqueArgs} args - Arguments to find a Sms
    * @example
-   * // Get one SMS
-   * const sMS = await prisma.sMS.findUnique({
+   * // Get one Sms
+   * const sms = await prisma.sms.findUnique({
    *   where: {
    *     // ... provide filter here
    *   }
    * })
    */
-  findUnique<T extends SMSFindUniqueArgs>(args: Prisma.SelectSubset<T, SMSFindUniqueArgs<ExtArgs>>): Prisma.Prisma__SMSClient<runtime.Types.Result.GetResult<Prisma.$SMSPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findUnique<T extends SmsFindUniqueArgs>(args: Prisma.SelectSubset<T, SmsFindUniqueArgs<ExtArgs>>): Prisma.Prisma__SmsClient<runtime.Types.Result.GetResult<Prisma.$SmsPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Find one SMS that matches the filter or throw an error with `error.code='P2025'`
+   * Find one Sms that matches the filter or throw an error with `error.code='P2025'`
    * if no matches were found.
-   * @param {SMSFindUniqueOrThrowArgs} args - Arguments to find a SMS
+   * @param {SmsFindUniqueOrThrowArgs} args - Arguments to find a Sms
    * @example
-   * // Get one SMS
-   * const sMS = await prisma.sMS.findUniqueOrThrow({
+   * // Get one Sms
+   * const sms = await prisma.sms.findUniqueOrThrow({
    *   where: {
    *     // ... provide filter here
    *   }
    * })
    */
-  findUniqueOrThrow<T extends SMSFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, SMSFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__SMSClient<runtime.Types.Result.GetResult<Prisma.$SMSPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findUniqueOrThrow<T extends SmsFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, SmsFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__SmsClient<runtime.Types.Result.GetResult<Prisma.$SmsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Find the first SMS that matches the filter.
+   * Find the first Sms that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {SMSFindFirstArgs} args - Arguments to find a SMS
+   * @param {SmsFindFirstArgs} args - Arguments to find a Sms
    * @example
-   * // Get one SMS
-   * const sMS = await prisma.sMS.findFirst({
+   * // Get one Sms
+   * const sms = await prisma.sms.findFirst({
    *   where: {
    *     // ... provide filter here
    *   }
    * })
    */
-  findFirst<T extends SMSFindFirstArgs>(args?: Prisma.SelectSubset<T, SMSFindFirstArgs<ExtArgs>>): Prisma.Prisma__SMSClient<runtime.Types.Result.GetResult<Prisma.$SMSPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  findFirst<T extends SmsFindFirstArgs>(args?: Prisma.SelectSubset<T, SmsFindFirstArgs<ExtArgs>>): Prisma.Prisma__SmsClient<runtime.Types.Result.GetResult<Prisma.$SmsPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Find the first SMS that matches the filter or
+   * Find the first Sms that matches the filter or
    * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {SMSFindFirstOrThrowArgs} args - Arguments to find a SMS
+   * @param {SmsFindFirstOrThrowArgs} args - Arguments to find a Sms
    * @example
-   * // Get one SMS
-   * const sMS = await prisma.sMS.findFirstOrThrow({
+   * // Get one Sms
+   * const sms = await prisma.sms.findFirstOrThrow({
    *   where: {
    *     // ... provide filter here
    *   }
    * })
    */
-  findFirstOrThrow<T extends SMSFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, SMSFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__SMSClient<runtime.Types.Result.GetResult<Prisma.$SMSPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  findFirstOrThrow<T extends SmsFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, SmsFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__SmsClient<runtime.Types.Result.GetResult<Prisma.$SmsPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Find zero or more SMS that matches the filter.
+   * Find zero or more Sms that matches the filter.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {SMSFindManyArgs} args - Arguments to filter and select certain fields only.
+   * @param {SmsFindManyArgs} args - Arguments to filter and select certain fields only.
    * @example
-   * // Get all SMS
-   * const sMS = await prisma.sMS.findMany()
+   * // Get all Sms
+   * const sms = await prisma.sms.findMany()
    * 
-   * // Get first 10 SMS
-   * const sMS = await prisma.sMS.findMany({ take: 10 })
+   * // Get first 10 Sms
+   * const sms = await prisma.sms.findMany({ take: 10 })
    * 
    * // Only select the `id`
-   * const sMSWithIdOnly = await prisma.sMS.findMany({ select: { id: true } })
+   * const smsWithIdOnly = await prisma.sms.findMany({ select: { id: true } })
    * 
    */
-  findMany<T extends SMSFindManyArgs>(args?: Prisma.SelectSubset<T, SMSFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SMSPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+  findMany<T extends SmsFindManyArgs>(args?: Prisma.SelectSubset<T, SmsFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SmsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
   /**
-   * Create a SMS.
-   * @param {SMSCreateArgs} args - Arguments to create a SMS.
+   * Create a Sms.
+   * @param {SmsCreateArgs} args - Arguments to create a Sms.
    * @example
-   * // Create one SMS
-   * const SMS = await prisma.sMS.create({
+   * // Create one Sms
+   * const Sms = await prisma.sms.create({
    *   data: {
-   *     // ... data to create a SMS
+   *     // ... data to create a Sms
    *   }
    * })
    * 
    */
-  create<T extends SMSCreateArgs>(args: Prisma.SelectSubset<T, SMSCreateArgs<ExtArgs>>): Prisma.Prisma__SMSClient<runtime.Types.Result.GetResult<Prisma.$SMSPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  create<T extends SmsCreateArgs>(args: Prisma.SelectSubset<T, SmsCreateArgs<ExtArgs>>): Prisma.Prisma__SmsClient<runtime.Types.Result.GetResult<Prisma.$SmsPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Create many SMS.
-   * @param {SMSCreateManyArgs} args - Arguments to create many SMS.
+   * Create many Sms.
+   * @param {SmsCreateManyArgs} args - Arguments to create many Sms.
    * @example
-   * // Create many SMS
-   * const sMS = await prisma.sMS.createMany({
+   * // Create many Sms
+   * const sms = await prisma.sms.createMany({
    *   data: [
    *     // ... provide data here
    *   ]
    * })
    *     
    */
-  createMany<T extends SMSCreateManyArgs>(args?: Prisma.SelectSubset<T, SMSCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  createMany<T extends SmsCreateManyArgs>(args?: Prisma.SelectSubset<T, SmsCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
-   * Create many SMS and returns the data saved in the database.
-   * @param {SMSCreateManyAndReturnArgs} args - Arguments to create many SMS.
+   * Create many Sms and returns the data saved in the database.
+   * @param {SmsCreateManyAndReturnArgs} args - Arguments to create many Sms.
    * @example
-   * // Create many SMS
-   * const sMS = await prisma.sMS.createManyAndReturn({
+   * // Create many Sms
+   * const sms = await prisma.sms.createManyAndReturn({
    *   data: [
    *     // ... provide data here
    *   ]
    * })
    * 
-   * // Create many SMS and only return the `id`
-   * const sMSWithIdOnly = await prisma.sMS.createManyAndReturn({
+   * // Create many Sms and only return the `id`
+   * const smsWithIdOnly = await prisma.sms.createManyAndReturn({
    *   select: { id: true },
    *   data: [
    *     // ... provide data here
@@ -637,28 +637,28 @@ export interface SMSDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  createManyAndReturn<T extends SMSCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, SMSCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SMSPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+  createManyAndReturn<T extends SmsCreateManyAndReturnArgs>(args?: Prisma.SelectSubset<T, SmsCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SmsPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
   /**
-   * Delete a SMS.
-   * @param {SMSDeleteArgs} args - Arguments to delete one SMS.
+   * Delete a Sms.
+   * @param {SmsDeleteArgs} args - Arguments to delete one Sms.
    * @example
-   * // Delete one SMS
-   * const SMS = await prisma.sMS.delete({
+   * // Delete one Sms
+   * const Sms = await prisma.sms.delete({
    *   where: {
-   *     // ... filter to delete one SMS
+   *     // ... filter to delete one Sms
    *   }
    * })
    * 
    */
-  delete<T extends SMSDeleteArgs>(args: Prisma.SelectSubset<T, SMSDeleteArgs<ExtArgs>>): Prisma.Prisma__SMSClient<runtime.Types.Result.GetResult<Prisma.$SMSPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  delete<T extends SmsDeleteArgs>(args: Prisma.SelectSubset<T, SmsDeleteArgs<ExtArgs>>): Prisma.Prisma__SmsClient<runtime.Types.Result.GetResult<Prisma.$SmsPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Update one SMS.
-   * @param {SMSUpdateArgs} args - Arguments to update one SMS.
+   * Update one Sms.
+   * @param {SmsUpdateArgs} args - Arguments to update one Sms.
    * @example
-   * // Update one SMS
-   * const sMS = await prisma.sMS.update({
+   * // Update one Sms
+   * const sms = await prisma.sms.update({
    *   where: {
    *     // ... provide filter here
    *   },
@@ -668,30 +668,30 @@ export interface SMSDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    * })
    * 
    */
-  update<T extends SMSUpdateArgs>(args: Prisma.SelectSubset<T, SMSUpdateArgs<ExtArgs>>): Prisma.Prisma__SMSClient<runtime.Types.Result.GetResult<Prisma.$SMSPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  update<T extends SmsUpdateArgs>(args: Prisma.SelectSubset<T, SmsUpdateArgs<ExtArgs>>): Prisma.Prisma__SmsClient<runtime.Types.Result.GetResult<Prisma.$SmsPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
   /**
-   * Delete zero or more SMS.
-   * @param {SMSDeleteManyArgs} args - Arguments to filter SMS to delete.
+   * Delete zero or more Sms.
+   * @param {SmsDeleteManyArgs} args - Arguments to filter Sms to delete.
    * @example
-   * // Delete a few SMS
-   * const { count } = await prisma.sMS.deleteMany({
+   * // Delete a few Sms
+   * const { count } = await prisma.sms.deleteMany({
    *   where: {
    *     // ... provide filter here
    *   }
    * })
    * 
    */
-  deleteMany<T extends SMSDeleteManyArgs>(args?: Prisma.SelectSubset<T, SMSDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  deleteMany<T extends SmsDeleteManyArgs>(args?: Prisma.SelectSubset<T, SmsDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
-   * Update zero or more SMS.
+   * Update zero or more Sms.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {SMSUpdateManyArgs} args - Arguments to update one or more rows.
+   * @param {SmsUpdateManyArgs} args - Arguments to update one or more rows.
    * @example
-   * // Update many SMS
-   * const sMS = await prisma.sMS.updateMany({
+   * // Update many Sms
+   * const sms = await prisma.sms.updateMany({
    *   where: {
    *     // ... provide filter here
    *   },
@@ -701,14 +701,14 @@ export interface SMSDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    * })
    * 
    */
-  updateMany<T extends SMSUpdateManyArgs>(args: Prisma.SelectSubset<T, SMSUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
+  updateMany<T extends SmsUpdateManyArgs>(args: Prisma.SelectSubset<T, SmsUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>
 
   /**
-   * Update zero or more SMS and returns the data updated in the database.
-   * @param {SMSUpdateManyAndReturnArgs} args - Arguments to update many SMS.
+   * Update zero or more Sms and returns the data updated in the database.
+   * @param {SmsUpdateManyAndReturnArgs} args - Arguments to update many Sms.
    * @example
-   * // Update many SMS
-   * const sMS = await prisma.sMS.updateManyAndReturn({
+   * // Update many Sms
+   * const sms = await prisma.sms.updateManyAndReturn({
    *   where: {
    *     // ... provide filter here
    *   },
@@ -717,8 +717,8 @@ export interface SMSDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    *   ]
    * })
    * 
-   * // Update zero or more SMS and only return the `id`
-   * const sMSWithIdOnly = await prisma.sMS.updateManyAndReturn({
+   * // Update zero or more Sms and only return the `id`
+   * const smsWithIdOnly = await prisma.sms.updateManyAndReturn({
    *   select: { id: true },
    *   where: {
    *     // ... provide filter here
@@ -731,56 +731,56 @@ export interface SMSDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    * Read more here: https://pris.ly/d/null-undefined
    * 
    */
-  updateManyAndReturn<T extends SMSUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, SMSUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SMSPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+  updateManyAndReturn<T extends SmsUpdateManyAndReturnArgs>(args: Prisma.SelectSubset<T, SmsUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SmsPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
   /**
-   * Create or update one SMS.
-   * @param {SMSUpsertArgs} args - Arguments to update or create a SMS.
+   * Create or update one Sms.
+   * @param {SmsUpsertArgs} args - Arguments to update or create a Sms.
    * @example
-   * // Update or create a SMS
-   * const sMS = await prisma.sMS.upsert({
+   * // Update or create a Sms
+   * const sms = await prisma.sms.upsert({
    *   create: {
-   *     // ... data to create a SMS
+   *     // ... data to create a Sms
    *   },
    *   update: {
    *     // ... in case it already exists, update
    *   },
    *   where: {
-   *     // ... the filter for the SMS we want to update
+   *     // ... the filter for the Sms we want to update
    *   }
    * })
    */
-  upsert<T extends SMSUpsertArgs>(args: Prisma.SelectSubset<T, SMSUpsertArgs<ExtArgs>>): Prisma.Prisma__SMSClient<runtime.Types.Result.GetResult<Prisma.$SMSPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+  upsert<T extends SmsUpsertArgs>(args: Prisma.SelectSubset<T, SmsUpsertArgs<ExtArgs>>): Prisma.Prisma__SmsClient<runtime.Types.Result.GetResult<Prisma.$SmsPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
   /**
-   * Count the number of SMS.
+   * Count the number of Sms.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {SMSCountArgs} args - Arguments to filter SMS to count.
+   * @param {SmsCountArgs} args - Arguments to filter Sms to count.
    * @example
-   * // Count the number of SMS
-   * const count = await prisma.sMS.count({
+   * // Count the number of Sms
+   * const count = await prisma.sms.count({
    *   where: {
-   *     // ... the filter for the SMS we want to count
+   *     // ... the filter for the Sms we want to count
    *   }
    * })
   **/
-  count<T extends SMSCountArgs>(
-    args?: Prisma.Subset<T, SMSCountArgs>,
+  count<T extends SmsCountArgs>(
+    args?: Prisma.Subset<T, SmsCountArgs>,
   ): Prisma.PrismaPromise<
     T extends runtime.Types.Utils.Record<'select', any>
       ? T['select'] extends true
         ? number
-        : Prisma.GetScalarType<T['select'], SMSCountAggregateOutputType>
+        : Prisma.GetScalarType<T['select'], SmsCountAggregateOutputType>
       : number
   >
 
   /**
-   * Allows you to perform aggregations operations on a SMS.
+   * Allows you to perform aggregations operations on a Sms.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {SMSAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+   * @param {SmsAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
    * @example
    * // Ordered by age ascending
    * // Where email contains prisma.io
@@ -800,13 +800,13 @@ export interface SMSDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    *   take: 10,
    * })
   **/
-  aggregate<T extends SMSAggregateArgs>(args: Prisma.Subset<T, SMSAggregateArgs>): Prisma.PrismaPromise<GetSMSAggregateType<T>>
+  aggregate<T extends SmsAggregateArgs>(args: Prisma.Subset<T, SmsAggregateArgs>): Prisma.PrismaPromise<GetSmsAggregateType<T>>
 
   /**
-   * Group by SMS.
+   * Group by Sms.
    * Note, that providing `undefined` is treated as the value not being there.
    * Read more here: https://pris.ly/d/null-undefined
-   * @param {SMSGroupByArgs} args - Group by arguments.
+   * @param {SmsGroupByArgs} args - Group by arguments.
    * @example
    * // Group by city, order by createdAt, get count
    * const result = await prisma.user.groupBy({
@@ -821,14 +821,14 @@ export interface SMSDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
    * 
   **/
   groupBy<
-    T extends SMSGroupByArgs,
+    T extends SmsGroupByArgs,
     HasSelectOrTake extends Prisma.Or<
       Prisma.Extends<'skip', Prisma.Keys<T>>,
       Prisma.Extends<'take', Prisma.Keys<T>>
     >,
     OrderByArg extends Prisma.True extends HasSelectOrTake
-      ? { orderBy: SMSGroupByArgs['orderBy'] }
-      : { orderBy?: SMSGroupByArgs['orderBy'] },
+      ? { orderBy: SmsGroupByArgs['orderBy'] }
+      : { orderBy?: SmsGroupByArgs['orderBy'] },
     OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>,
     ByFields extends Prisma.MaybeTupleToUnion<T['by']>,
     ByValid extends Prisma.Has<ByFields, OrderFields>,
@@ -877,20 +877,20 @@ export interface SMSDelegate<ExtArgs extends runtime.Types.Extensions.InternalAr
           ? never
           : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
       }[OrderFields]
-  >(args: Prisma.SubsetIntersection<T, SMSGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSMSGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  >(args: Prisma.SubsetIntersection<T, SmsGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSmsGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
 /**
- * Fields of the SMS model
+ * Fields of the Sms model
  */
-readonly fields: SMSFieldRefs;
+readonly fields: SmsFieldRefs;
 }
 
 /**
- * The delegate class that acts as a "Promise-like" for SMS.
+ * The delegate class that acts as a "Promise-like" for Sms.
  * Why is this prefixed with `Prisma__`?
  * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
-export interface Prisma__SMSClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+export interface Prisma__SmsClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   notification<T extends Prisma.NotificationsDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.NotificationsDefaultArgs<ExtArgs>>): Prisma.Prisma__NotificationsClient<runtime.Types.Result.GetResult<Prisma.$NotificationsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
@@ -919,428 +919,428 @@ export interface Prisma__SMSClient<T, Null = never, ExtArgs extends runtime.Type
 
 
 /**
- * Fields of the SMS model
+ * Fields of the Sms model
  */
-export interface SMSFieldRefs {
-  readonly id: Prisma.FieldRef<"SMS", 'Int'>
-  readonly notificationId: Prisma.FieldRef<"SMS", 'Int'>
-  readonly recipient: Prisma.FieldRef<"SMS", 'Int'>
-  readonly state: Prisma.FieldRef<"SMS", 'String'>
-  readonly sentAt: Prisma.FieldRef<"SMS", 'DateTime'>
+export interface SmsFieldRefs {
+  readonly id: Prisma.FieldRef<"Sms", 'Int'>
+  readonly notificationId: Prisma.FieldRef<"Sms", 'Int'>
+  readonly recipient: Prisma.FieldRef<"Sms", 'Int'>
+  readonly state: Prisma.FieldRef<"Sms", 'String'>
+  readonly sentAt: Prisma.FieldRef<"Sms", 'DateTime'>
 }
     
 
 // Custom InputTypes
 /**
- * SMS findUnique
+ * Sms findUnique
  */
-export type SMSFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SMS
+   * Select specific fields to fetch from the Sms
    */
-  select?: Prisma.SMSSelect<ExtArgs> | null
+  select?: Prisma.SmsSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the SMS
+   * Omit specific fields from the Sms
    */
-  omit?: Prisma.SMSOmit<ExtArgs> | null
+  omit?: Prisma.SmsOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SMSInclude<ExtArgs> | null
+  include?: Prisma.SmsInclude<ExtArgs> | null
   /**
-   * Filter, which SMS to fetch.
+   * Filter, which Sms to fetch.
    */
-  where: Prisma.SMSWhereUniqueInput
+  where: Prisma.SmsWhereUniqueInput
 }
 
 /**
- * SMS findUniqueOrThrow
+ * Sms findUniqueOrThrow
  */
-export type SMSFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SMS
+   * Select specific fields to fetch from the Sms
    */
-  select?: Prisma.SMSSelect<ExtArgs> | null
+  select?: Prisma.SmsSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the SMS
+   * Omit specific fields from the Sms
    */
-  omit?: Prisma.SMSOmit<ExtArgs> | null
+  omit?: Prisma.SmsOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SMSInclude<ExtArgs> | null
+  include?: Prisma.SmsInclude<ExtArgs> | null
   /**
-   * Filter, which SMS to fetch.
+   * Filter, which Sms to fetch.
    */
-  where: Prisma.SMSWhereUniqueInput
+  where: Prisma.SmsWhereUniqueInput
 }
 
 /**
- * SMS findFirst
+ * Sms findFirst
  */
-export type SMSFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SMS
+   * Select specific fields to fetch from the Sms
    */
-  select?: Prisma.SMSSelect<ExtArgs> | null
+  select?: Prisma.SmsSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the SMS
+   * Omit specific fields from the Sms
    */
-  omit?: Prisma.SMSOmit<ExtArgs> | null
+  omit?: Prisma.SmsOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SMSInclude<ExtArgs> | null
+  include?: Prisma.SmsInclude<ExtArgs> | null
   /**
-   * Filter, which SMS to fetch.
+   * Filter, which Sms to fetch.
    */
-  where?: Prisma.SMSWhereInput
+  where?: Prisma.SmsWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of SMS to fetch.
+   * Determine the order of Sms to fetch.
    */
-  orderBy?: Prisma.SMSOrderByWithRelationInput | Prisma.SMSOrderByWithRelationInput[]
+  orderBy?: Prisma.SmsOrderByWithRelationInput | Prisma.SmsOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for SMS.
+   * Sets the position for searching for Sms.
    */
-  cursor?: Prisma.SMSWhereUniqueInput
+  cursor?: Prisma.SmsWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` SMS from the position of the cursor.
+   * Take `±n` Sms from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` SMS.
+   * Skip the first `n` Sms.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of SMS.
+   * Filter by unique combinations of Sms.
    */
-  distinct?: Prisma.SMSScalarFieldEnum | Prisma.SMSScalarFieldEnum[]
+  distinct?: Prisma.SmsScalarFieldEnum | Prisma.SmsScalarFieldEnum[]
 }
 
 /**
- * SMS findFirstOrThrow
+ * Sms findFirstOrThrow
  */
-export type SMSFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SMS
+   * Select specific fields to fetch from the Sms
    */
-  select?: Prisma.SMSSelect<ExtArgs> | null
+  select?: Prisma.SmsSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the SMS
+   * Omit specific fields from the Sms
    */
-  omit?: Prisma.SMSOmit<ExtArgs> | null
+  omit?: Prisma.SmsOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SMSInclude<ExtArgs> | null
+  include?: Prisma.SmsInclude<ExtArgs> | null
   /**
-   * Filter, which SMS to fetch.
+   * Filter, which Sms to fetch.
    */
-  where?: Prisma.SMSWhereInput
+  where?: Prisma.SmsWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of SMS to fetch.
+   * Determine the order of Sms to fetch.
    */
-  orderBy?: Prisma.SMSOrderByWithRelationInput | Prisma.SMSOrderByWithRelationInput[]
+  orderBy?: Prisma.SmsOrderByWithRelationInput | Prisma.SmsOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for searching for SMS.
+   * Sets the position for searching for Sms.
    */
-  cursor?: Prisma.SMSWhereUniqueInput
+  cursor?: Prisma.SmsWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` SMS from the position of the cursor.
+   * Take `±n` Sms from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` SMS.
+   * Skip the first `n` Sms.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of SMS.
+   * Filter by unique combinations of Sms.
    */
-  distinct?: Prisma.SMSScalarFieldEnum | Prisma.SMSScalarFieldEnum[]
+  distinct?: Prisma.SmsScalarFieldEnum | Prisma.SmsScalarFieldEnum[]
 }
 
 /**
- * SMS findMany
+ * Sms findMany
  */
-export type SMSFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SMS
+   * Select specific fields to fetch from the Sms
    */
-  select?: Prisma.SMSSelect<ExtArgs> | null
+  select?: Prisma.SmsSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the SMS
+   * Omit specific fields from the Sms
    */
-  omit?: Prisma.SMSOmit<ExtArgs> | null
+  omit?: Prisma.SmsOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SMSInclude<ExtArgs> | null
+  include?: Prisma.SmsInclude<ExtArgs> | null
   /**
-   * Filter, which SMS to fetch.
+   * Filter, which Sms to fetch.
    */
-  where?: Prisma.SMSWhereInput
+  where?: Prisma.SmsWhereInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
    * 
-   * Determine the order of SMS to fetch.
+   * Determine the order of Sms to fetch.
    */
-  orderBy?: Prisma.SMSOrderByWithRelationInput | Prisma.SMSOrderByWithRelationInput[]
+  orderBy?: Prisma.SmsOrderByWithRelationInput | Prisma.SmsOrderByWithRelationInput[]
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
    * 
-   * Sets the position for listing SMS.
+   * Sets the position for listing Sms.
    */
-  cursor?: Prisma.SMSWhereUniqueInput
+  cursor?: Prisma.SmsWhereUniqueInput
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Take `±n` SMS from the position of the cursor.
+   * Take `±n` Sms from the position of the cursor.
    */
   take?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
    * 
-   * Skip the first `n` SMS.
+   * Skip the first `n` Sms.
    */
   skip?: number
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
    * 
-   * Filter by unique combinations of SMS.
+   * Filter by unique combinations of Sms.
    */
-  distinct?: Prisma.SMSScalarFieldEnum | Prisma.SMSScalarFieldEnum[]
+  distinct?: Prisma.SmsScalarFieldEnum | Prisma.SmsScalarFieldEnum[]
 }
 
 /**
- * SMS create
+ * Sms create
  */
-export type SMSCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SMS
+   * Select specific fields to fetch from the Sms
    */
-  select?: Prisma.SMSSelect<ExtArgs> | null
+  select?: Prisma.SmsSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the SMS
+   * Omit specific fields from the Sms
    */
-  omit?: Prisma.SMSOmit<ExtArgs> | null
+  omit?: Prisma.SmsOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SMSInclude<ExtArgs> | null
+  include?: Prisma.SmsInclude<ExtArgs> | null
   /**
-   * The data needed to create a SMS.
+   * The data needed to create a Sms.
    */
-  data: Prisma.XOR<Prisma.SMSCreateInput, Prisma.SMSUncheckedCreateInput>
+  data: Prisma.XOR<Prisma.SmsCreateInput, Prisma.SmsUncheckedCreateInput>
 }
 
 /**
- * SMS createMany
+ * Sms createMany
  */
-export type SMSCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to create many SMS.
+   * The data used to create many Sms.
    */
-  data: Prisma.SMSCreateManyInput | Prisma.SMSCreateManyInput[]
+  data: Prisma.SmsCreateManyInput | Prisma.SmsCreateManyInput[]
   skipDuplicates?: boolean
 }
 
 /**
- * SMS createManyAndReturn
+ * Sms createManyAndReturn
  */
-export type SMSCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsCreateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SMS
+   * Select specific fields to fetch from the Sms
    */
-  select?: Prisma.SMSSelectCreateManyAndReturn<ExtArgs> | null
+  select?: Prisma.SmsSelectCreateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the SMS
+   * Omit specific fields from the Sms
    */
-  omit?: Prisma.SMSOmit<ExtArgs> | null
+  omit?: Prisma.SmsOmit<ExtArgs> | null
   /**
-   * The data used to create many SMS.
+   * The data used to create many Sms.
    */
-  data: Prisma.SMSCreateManyInput | Prisma.SMSCreateManyInput[]
+  data: Prisma.SmsCreateManyInput | Prisma.SmsCreateManyInput[]
   skipDuplicates?: boolean
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SMSIncludeCreateManyAndReturn<ExtArgs> | null
+  include?: Prisma.SmsIncludeCreateManyAndReturn<ExtArgs> | null
 }
 
 /**
- * SMS update
+ * Sms update
  */
-export type SMSUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SMS
+   * Select specific fields to fetch from the Sms
    */
-  select?: Prisma.SMSSelect<ExtArgs> | null
+  select?: Prisma.SmsSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the SMS
+   * Omit specific fields from the Sms
    */
-  omit?: Prisma.SMSOmit<ExtArgs> | null
+  omit?: Prisma.SmsOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SMSInclude<ExtArgs> | null
+  include?: Prisma.SmsInclude<ExtArgs> | null
   /**
-   * The data needed to update a SMS.
+   * The data needed to update a Sms.
    */
-  data: Prisma.XOR<Prisma.SMSUpdateInput, Prisma.SMSUncheckedUpdateInput>
+  data: Prisma.XOR<Prisma.SmsUpdateInput, Prisma.SmsUncheckedUpdateInput>
   /**
-   * Choose, which SMS to update.
+   * Choose, which Sms to update.
    */
-  where: Prisma.SMSWhereUniqueInput
+  where: Prisma.SmsWhereUniqueInput
 }
 
 /**
- * SMS updateMany
+ * Sms updateMany
  */
-export type SMSUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * The data used to update SMS.
+   * The data used to update Sms.
    */
-  data: Prisma.XOR<Prisma.SMSUpdateManyMutationInput, Prisma.SMSUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.SmsUpdateManyMutationInput, Prisma.SmsUncheckedUpdateManyInput>
   /**
-   * Filter which SMS to update
+   * Filter which Sms to update
    */
-  where?: Prisma.SMSWhereInput
+  where?: Prisma.SmsWhereInput
   /**
-   * Limit how many SMS to update.
+   * Limit how many Sms to update.
    */
   limit?: number
 }
 
 /**
- * SMS updateManyAndReturn
+ * Sms updateManyAndReturn
  */
-export type SMSUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsUpdateManyAndReturnArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SMS
+   * Select specific fields to fetch from the Sms
    */
-  select?: Prisma.SMSSelectUpdateManyAndReturn<ExtArgs> | null
+  select?: Prisma.SmsSelectUpdateManyAndReturn<ExtArgs> | null
   /**
-   * Omit specific fields from the SMS
+   * Omit specific fields from the Sms
    */
-  omit?: Prisma.SMSOmit<ExtArgs> | null
+  omit?: Prisma.SmsOmit<ExtArgs> | null
   /**
-   * The data used to update SMS.
+   * The data used to update Sms.
    */
-  data: Prisma.XOR<Prisma.SMSUpdateManyMutationInput, Prisma.SMSUncheckedUpdateManyInput>
+  data: Prisma.XOR<Prisma.SmsUpdateManyMutationInput, Prisma.SmsUncheckedUpdateManyInput>
   /**
-   * Filter which SMS to update
+   * Filter which Sms to update
    */
-  where?: Prisma.SMSWhereInput
+  where?: Prisma.SmsWhereInput
   /**
-   * Limit how many SMS to update.
+   * Limit how many Sms to update.
    */
   limit?: number
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SMSIncludeUpdateManyAndReturn<ExtArgs> | null
+  include?: Prisma.SmsIncludeUpdateManyAndReturn<ExtArgs> | null
 }
 
 /**
- * SMS upsert
+ * Sms upsert
  */
-export type SMSUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SMS
+   * Select specific fields to fetch from the Sms
    */
-  select?: Prisma.SMSSelect<ExtArgs> | null
+  select?: Prisma.SmsSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the SMS
+   * Omit specific fields from the Sms
    */
-  omit?: Prisma.SMSOmit<ExtArgs> | null
+  omit?: Prisma.SmsOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SMSInclude<ExtArgs> | null
+  include?: Prisma.SmsInclude<ExtArgs> | null
   /**
-   * The filter to search for the SMS to update in case it exists.
+   * The filter to search for the Sms to update in case it exists.
    */
-  where: Prisma.SMSWhereUniqueInput
+  where: Prisma.SmsWhereUniqueInput
   /**
-   * In case the SMS found by the `where` argument doesn't exist, create a new SMS with this data.
+   * In case the Sms found by the `where` argument doesn't exist, create a new Sms with this data.
    */
-  create: Prisma.XOR<Prisma.SMSCreateInput, Prisma.SMSUncheckedCreateInput>
+  create: Prisma.XOR<Prisma.SmsCreateInput, Prisma.SmsUncheckedCreateInput>
   /**
-   * In case the SMS was found with the provided `where` argument, update it with this data.
+   * In case the Sms was found with the provided `where` argument, update it with this data.
    */
-  update: Prisma.XOR<Prisma.SMSUpdateInput, Prisma.SMSUncheckedUpdateInput>
+  update: Prisma.XOR<Prisma.SmsUpdateInput, Prisma.SmsUncheckedUpdateInput>
 }
 
 /**
- * SMS delete
+ * Sms delete
  */
-export type SMSDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SMS
+   * Select specific fields to fetch from the Sms
    */
-  select?: Prisma.SMSSelect<ExtArgs> | null
+  select?: Prisma.SmsSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the SMS
+   * Omit specific fields from the Sms
    */
-  omit?: Prisma.SMSOmit<ExtArgs> | null
+  omit?: Prisma.SmsOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SMSInclude<ExtArgs> | null
+  include?: Prisma.SmsInclude<ExtArgs> | null
   /**
-   * Filter which SMS to delete.
+   * Filter which Sms to delete.
    */
-  where: Prisma.SMSWhereUniqueInput
+  where: Prisma.SmsWhereUniqueInput
 }
 
 /**
- * SMS deleteMany
+ * Sms deleteMany
  */
-export type SMSDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Filter which SMS to delete
+   * Filter which Sms to delete
    */
-  where?: Prisma.SMSWhereInput
+  where?: Prisma.SmsWhereInput
   /**
-   * Limit how many SMS to delete.
+   * Limit how many Sms to delete.
    */
   limit?: number
 }
 
 /**
- * SMS without action
+ * Sms without action
  */
-export type SMSDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type SmsDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the SMS
+   * Select specific fields to fetch from the Sms
    */
-  select?: Prisma.SMSSelect<ExtArgs> | null
+  select?: Prisma.SmsSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the SMS
+   * Omit specific fields from the Sms
    */
-  omit?: Prisma.SMSOmit<ExtArgs> | null
+  omit?: Prisma.SmsOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.SMSInclude<ExtArgs> | null
+  include?: Prisma.SmsInclude<ExtArgs> | null
 }

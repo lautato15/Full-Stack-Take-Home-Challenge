@@ -387,7 +387,7 @@ export const ModelName = {
   Users: 'Users',
   Notifications: 'Notifications',
   Email: 'Email',
-  SMS: 'SMS',
+  Sms: 'Sms',
   Push: 'Push'
 } as const
 
@@ -404,7 +404,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "users" | "notifications" | "email" | "sMS" | "push"
+    modelProps: "users" | "notifications" | "email" | "sms" | "push"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -630,77 +630,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    SMS: {
-      payload: Prisma.$SMSPayload<ExtArgs>
-      fields: Prisma.SMSFieldRefs
+    Sms: {
+      payload: Prisma.$SmsPayload<ExtArgs>
+      fields: Prisma.SmsFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.SMSFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSPayload> | null
+          args: Prisma.SmsFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SmsPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.SMSFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSPayload>
+          args: Prisma.SmsFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SmsPayload>
         }
         findFirst: {
-          args: Prisma.SMSFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSPayload> | null
+          args: Prisma.SmsFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SmsPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.SMSFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSPayload>
+          args: Prisma.SmsFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SmsPayload>
         }
         findMany: {
-          args: Prisma.SMSFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSPayload>[]
+          args: Prisma.SmsFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SmsPayload>[]
         }
         create: {
-          args: Prisma.SMSCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSPayload>
+          args: Prisma.SmsCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SmsPayload>
         }
         createMany: {
-          args: Prisma.SMSCreateManyArgs<ExtArgs>
+          args: Prisma.SmsCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.SMSCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSPayload>[]
+          args: Prisma.SmsCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SmsPayload>[]
         }
         delete: {
-          args: Prisma.SMSDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSPayload>
+          args: Prisma.SmsDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SmsPayload>
         }
         update: {
-          args: Prisma.SMSUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSPayload>
+          args: Prisma.SmsUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SmsPayload>
         }
         deleteMany: {
-          args: Prisma.SMSDeleteManyArgs<ExtArgs>
+          args: Prisma.SmsDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.SMSUpdateManyArgs<ExtArgs>
+          args: Prisma.SmsUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.SMSUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSPayload>[]
+          args: Prisma.SmsUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SmsPayload>[]
         }
         upsert: {
-          args: Prisma.SMSUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$SMSPayload>
+          args: Prisma.SmsUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SmsPayload>
         }
         aggregate: {
-          args: Prisma.SMSAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateSMS>
+          args: Prisma.SmsAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSms>
         }
         groupBy: {
-          args: Prisma.SMSGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.SMSGroupByOutputType>[]
+          args: Prisma.SmsGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SmsGroupByOutputType>[]
         }
         count: {
-          args: Prisma.SMSCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.SMSCountAggregateOutputType> | number
+          args: Prisma.SmsCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SmsCountAggregateOutputType> | number
         }
       }
     }
@@ -853,7 +853,7 @@ export const EmailScalarFieldEnum = {
 export type EmailScalarFieldEnum = (typeof EmailScalarFieldEnum)[keyof typeof EmailScalarFieldEnum]
 
 
-export const SMSScalarFieldEnum = {
+export const SmsScalarFieldEnum = {
   id: 'id',
   notificationId: 'notificationId',
   recipient: 'recipient',
@@ -861,7 +861,7 @@ export const SMSScalarFieldEnum = {
   sentAt: 'sentAt'
 } as const
 
-export type SMSScalarFieldEnum = (typeof SMSScalarFieldEnum)[keyof typeof SMSScalarFieldEnum]
+export type SmsScalarFieldEnum = (typeof SmsScalarFieldEnum)[keyof typeof SmsScalarFieldEnum]
 
 
 export const PushScalarFieldEnum = {
@@ -1073,7 +1073,7 @@ export type GlobalOmitConfig = {
   users?: Prisma.UsersOmit
   notifications?: Prisma.NotificationsOmit
   email?: Prisma.EmailOmit
-  sMS?: Prisma.SMSOmit
+  sms?: Prisma.SmsOmit
   push?: Prisma.PushOmit
 }
 

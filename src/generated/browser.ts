@@ -33,10 +33,10 @@ export type Notifications = Prisma.NotificationsModel
  */
 export type Email = Prisma.EmailModel
 /**
- * Model SMS
+ * Model Sms
  * 
  */
-export type SMS = Prisma.SMSModel
+export type Sms = Prisma.SmsModel
 /**
  * Model Push
  * 
