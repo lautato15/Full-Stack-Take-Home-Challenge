@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
 import { PrismaService } from 'src/prisma.service';
@@ -10,26 +14,33 @@ export class NotificationsService {
     createNotificationDto: CreateNotificationDto,
     sub: number,
   ) {
-    if (
-      createNotificationDto.title &&
-      createNotificationDto.content &&
-      createNotificationDto.channel
-    ) {
-      const notification = await this.prisma.notifications.create({
-        data: {
-          title: createNotificationDto.title,
-          content: createNotificationDto.content,
-          channel: createNotificationDto.channel,
-          authorId: sub,
-        },
-      });
-      if (notification)
-        return {
-          msg: 'Notificacion creada con exito',
-          notification: notification,
-        };
-      throw new NotFoundException('No se pudo crear la notificacion');
+    switch (createNotificationDto.channel) {
+      case 'EMAIL':
+        console.log('Email por aqui');
+        break;
+      case 'SMS':
+        console.log('SMS por aqui');
+        break;
+      case 'PUSH':
+        console.log('PUSH por aqui');
+        break;
+      default:
+        throw new BadRequestException('Tipo de canal de envío desconocido');
     }
+    const notification = await this.prisma.notifications.create({
+      data: {
+        title: createNotificationDto.title,
+        content: createNotificationDto.content,
+        channel: createNotificationDto.channel,
+        authorId: sub,
+      },
+    });
+    if (notification)
+      return {
+        msg: 'Notificacion creada con exito',
+        notification: notification,
+      };
+    throw new NotFoundException('No se pudo crear la notificacion');
   }
 
   async findAllNotifications(sub: number) {

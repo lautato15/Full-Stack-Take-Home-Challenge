@@ -2,5 +2,12 @@
   "material-icon-theme.activeIconPack": "nest",
   "github.copilot.enable": {
     "*": false
+  },
+  "material-icon-theme.folders.associations": {
+    "notifications": "messages",
+    "mail": "email",
+    "sms": "mobile",
+    "push": "tasks",
+    "users": "views"
   }
 }
