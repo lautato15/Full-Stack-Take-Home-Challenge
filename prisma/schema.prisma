@@ -39,7 +39,7 @@ model Email {
   notificationId Int @unique
   recipient String 
   sentAt DateTime ?
-  notification Notifications @relation(fields:[notificationId], references:[id])
+  notification Notifications @relation(fields:[notificationId], references:[id], onDelete: Cascade)
 }
 
 model Sms{
@@ -47,7 +47,7 @@ model Sms{
   notificationId Int @unique
   recipient Int 
   sentAt DateTime ?
-  notification Notifications @relation(fields:[notificationId], references:[id])
+  notification Notifications @relation(fields:[notificationId], references:[id], onDelete: Cascade)
 }
 
 model Push{
@@ -55,5 +55,5 @@ model Push{
   notificationId Int @unique
   recipient String 
   sentAt DateTime ?
-  notification Notifications @relation(fields:[notificationId], references:[id])
+  notification Notifications @relation(fields:[notificationId], references:[id], onDelete: Cascade)
 }

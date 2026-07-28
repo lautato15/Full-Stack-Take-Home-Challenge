@@ -10,6 +10,8 @@ import { EmailService } from './email/email.service';
 import { SmsService } from './sms/sms.service';
 import { PushService } from './push/push.service';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
+import { Prisma } from 'src/generated/client';
+import { error } from 'console';
 
 @Injectable()
 export class NotificationsService {
@@ -81,8 +83,6 @@ export class NotificationsService {
   }
 
   async findAllNotifications(sub: number) {
-    console.log('sub');
-    console.log(sub);
     const notifications = await this.prisma.notifications.findMany({
       include: {
         email: true,
@@ -110,7 +110,7 @@ export class NotificationsService {
         push: true,
       },
     });
-    if (!notification) return { msg: 'No se encuentra dicha notificacion' };
+    if (!notification) return { msg: 'No se encontro la Notificacion.' };
     return notification;
   }
 
@@ -184,8 +184,6 @@ export class NotificationsService {
       },
     };
     const serviceUpdate = services[notification.channel.toLowerCase()];
-    console.log('serviceUpdate,');
-    console.log(serviceUpdate);
     const updateNotification = await this.prisma.notifications.update({
       where: { authorId: user.sub, id: idNotification },
       include: {
@@ -206,22 +204,23 @@ export class NotificationsService {
   }
 
   async removeNotification(idNotification: number, sub: number) {
-    const notification = await this.prisma.notifications.findUnique({
-      where: {
-        authorId: sub,
-        id: idNotification,
-      },
-    });
-    if (!notification)
-      throw new NotFoundException('No se encontro la notificacion');
-    const deleteNotification = await this.prisma.notifications.delete({
-      where: {
-        authorId: sub,
-        id: idNotification,
-      },
-    });
-    console.log(deleteNotification);
-    if (deleteNotification) return 'Notificacion eliminada';
-    throw new NotFoundException('No se pudo eliminar la notificacion');
+    try {
+      const deleteNotification = await this.prisma.notifications.delete({
+        where: {
+          authorId: sub,
+          id: idNotification,
+        },
+      });
+      return deleteNotification;
+    } catch (error) {
+      if (error instanceof Prisma.PrismaClientKnownRequestError) {
+        if (error.code === 'P2025') {
+          console.log('Registro Inexistente - Error');
+          throw new NotFoundException('No se encontro la notificacion');
+        }
+      }
+      console.log(error);
+      throw error;
+    }
   }
 }
