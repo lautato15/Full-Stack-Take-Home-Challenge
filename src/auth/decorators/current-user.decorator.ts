@@ -11,3 +11,6 @@ export interface AuthenticatedUser {
   email: string;
   sub: number;
 }
+export interface AuthenticatedUserId {
+  sub: number;
+}

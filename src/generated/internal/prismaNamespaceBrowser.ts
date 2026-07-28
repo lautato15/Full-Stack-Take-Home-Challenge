@@ -103,7 +103,6 @@ export const EmailScalarFieldEnum = {
   id: 'id',
   notificationId: 'notificationId',
   recipient: 'recipient',
-  state: 'state',
   sentAt: 'sentAt'
 } as const
 
@@ -114,7 +113,6 @@ export const SmsScalarFieldEnum = {
   id: 'id',
   notificationId: 'notificationId',
   recipient: 'recipient',
-  state: 'state',
   sentAt: 'sentAt'
 } as const
 
@@ -125,7 +123,6 @@ export const PushScalarFieldEnum = {
   id: 'id',
   notificationId: 'notificationId',
   recipient: 'recipient',
-  state: 'state',
   sentAt: 'sentAt'
 } as const
 

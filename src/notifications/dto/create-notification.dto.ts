@@ -1,10 +1,9 @@
 import {
   IsEmail,
   IsIn,
-  isMobilePhone,
   IsMobilePhone,
   IsNotEmpty,
-  IsNumberString,
+  IsNumber,
   IsOptional,
   IsString,
   Length,
@@ -30,10 +29,10 @@ export class CreateNotificationDto {
   email?: string;
 
   @IsOptional()
-  @IsNumberString()
+  @IsNumber()
   @IsMobilePhone()
   @Min(8)
-  phone?: string;
+  phone?: number;
 
   @IsOptional()
   @IsString()

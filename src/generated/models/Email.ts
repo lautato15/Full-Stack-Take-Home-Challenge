@@ -40,7 +40,6 @@ export type EmailMinAggregateOutputType = {
   id: number | null
   notificationId: number | null
   recipient: string | null
-  state: string | null
   sentAt: Date | null
 }
 
@@ -48,7 +47,6 @@ export type EmailMaxAggregateOutputType = {
   id: number | null
   notificationId: number | null
   recipient: string | null
-  state: string | null
   sentAt: Date | null
 }
 
@@ -56,7 +54,6 @@ export type EmailCountAggregateOutputType = {
   id: number
   notificationId: number
   recipient: number
-  state: number
   sentAt: number
   _all: number
 }
@@ -76,7 +73,6 @@ export type EmailMinAggregateInputType = {
   id?: true
   notificationId?: true
   recipient?: true
-  state?: true
   sentAt?: true
 }
 
@@ -84,7 +80,6 @@ export type EmailMaxAggregateInputType = {
   id?: true
   notificationId?: true
   recipient?: true
-  state?: true
   sentAt?: true
 }
 
@@ -92,7 +87,6 @@ export type EmailCountAggregateInputType = {
   id?: true
   notificationId?: true
   recipient?: true
-  state?: true
   sentAt?: true
   _all?: true
 }
@@ -187,7 +181,6 @@ export type EmailGroupByOutputType = {
   id: number
   notificationId: number
   recipient: string
-  state: string
   sentAt: Date | null
   _count: EmailCountAggregateOutputType | null
   _avg: EmailAvgAggregateOutputType | null
@@ -218,7 +211,6 @@ export type EmailWhereInput = {
   id?: Prisma.IntFilter<"Email"> | number
   notificationId?: Prisma.IntFilter<"Email"> | number
   recipient?: Prisma.StringFilter<"Email"> | string
-  state?: Prisma.StringFilter<"Email"> | string
   sentAt?: Prisma.DateTimeNullableFilter<"Email"> | Date | string | null
   notification?: Prisma.XOR<Prisma.NotificationsScalarRelationFilter, Prisma.NotificationsWhereInput>
 }
@@ -227,7 +219,6 @@ export type EmailOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   sentAt?: Prisma.SortOrderInput | Prisma.SortOrder
   notification?: Prisma.NotificationsOrderByWithRelationInput
 }
@@ -239,7 +230,6 @@ export type EmailWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.EmailWhereInput[]
   NOT?: Prisma.EmailWhereInput | Prisma.EmailWhereInput[]
   recipient?: Prisma.StringFilter<"Email"> | string
-  state?: Prisma.StringFilter<"Email"> | string
   sentAt?: Prisma.DateTimeNullableFilter<"Email"> | Date | string | null
   notification?: Prisma.XOR<Prisma.NotificationsScalarRelationFilter, Prisma.NotificationsWhereInput>
 }, "id" | "notificationId">
@@ -248,7 +238,6 @@ export type EmailOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   sentAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.EmailCountOrderByAggregateInput
   _avg?: Prisma.EmailAvgOrderByAggregateInput
@@ -264,37 +253,32 @@ export type EmailScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Email"> | number
   notificationId?: Prisma.IntWithAggregatesFilter<"Email"> | number
   recipient?: Prisma.StringWithAggregatesFilter<"Email"> | string
-  state?: Prisma.StringWithAggregatesFilter<"Email"> | string
   sentAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Email"> | Date | string | null
 }
 
 export type EmailCreateInput = {
   recipient: string
-  state: string
   sentAt?: Date | string | null
-  notification: Prisma.NotificationsCreateNestedOneWithoutEmailIdInput
+  notification: Prisma.NotificationsCreateNestedOneWithoutEmailInput
 }
 
 export type EmailUncheckedCreateInput = {
   id?: number
   notificationId: number
   recipient: string
-  state: string
   sentAt?: Date | string | null
 }
 
 export type EmailUpdateInput = {
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  notification?: Prisma.NotificationsUpdateOneRequiredWithoutEmailIdNestedInput
+  notification?: Prisma.NotificationsUpdateOneRequiredWithoutEmailNestedInput
 }
 
 export type EmailUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   notificationId?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -302,13 +286,11 @@ export type EmailCreateManyInput = {
   id?: number
   notificationId: number
   recipient: string
-  state: string
   sentAt?: Date | string | null
 }
 
 export type EmailUpdateManyMutationInput = {
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -316,7 +298,6 @@ export type EmailUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   notificationId?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -329,7 +310,6 @@ export type EmailCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   sentAt?: Prisma.SortOrder
 }
 
@@ -342,7 +322,6 @@ export type EmailMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   sentAt?: Prisma.SortOrder
 }
 
@@ -350,7 +329,6 @@ export type EmailMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   sentAt?: Prisma.SortOrder
 }
 
@@ -397,14 +375,12 @@ export type NullableDateTimeFieldUpdateOperationsInput = {
 
 export type EmailCreateWithoutNotificationInput = {
   recipient: string
-  state: string
   sentAt?: Date | string | null
 }
 
 export type EmailUncheckedCreateWithoutNotificationInput = {
   id?: number
   recipient: string
-  state: string
   sentAt?: Date | string | null
 }
 
@@ -426,14 +402,12 @@ export type EmailUpdateToOneWithWhereWithoutNotificationInput = {
 
 export type EmailUpdateWithoutNotificationInput = {
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type EmailUncheckedUpdateWithoutNotificationInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -443,7 +417,6 @@ export type EmailSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   id?: boolean
   notificationId?: boolean
   recipient?: boolean
-  state?: boolean
   sentAt?: boolean
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["email"]>
@@ -452,7 +425,6 @@ export type EmailSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   notificationId?: boolean
   recipient?: boolean
-  state?: boolean
   sentAt?: boolean
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["email"]>
@@ -461,7 +433,6 @@ export type EmailSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   notificationId?: boolean
   recipient?: boolean
-  state?: boolean
   sentAt?: boolean
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["email"]>
@@ -470,11 +441,10 @@ export type EmailSelectScalar = {
   id?: boolean
   notificationId?: boolean
   recipient?: boolean
-  state?: boolean
   sentAt?: boolean
 }
 
-export type EmailOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "notificationId" | "recipient" | "state" | "sentAt", ExtArgs["result"]["email"]>
+export type EmailOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "notificationId" | "recipient" | "sentAt", ExtArgs["result"]["email"]>
 export type EmailInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
 }
@@ -494,7 +464,6 @@ export type $EmailPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     id: number
     notificationId: number
     recipient: string
-    state: string
     sentAt: Date | null
   }, ExtArgs["result"]["email"]>
   composites: {}
@@ -923,7 +892,6 @@ export interface EmailFieldRefs {
   readonly id: Prisma.FieldRef<"Email", 'Int'>
   readonly notificationId: Prisma.FieldRef<"Email", 'Int'>
   readonly recipient: Prisma.FieldRef<"Email", 'String'>
-  readonly state: Prisma.FieldRef<"Email", 'String'>
   readonly sentAt: Prisma.FieldRef<"Email", 'DateTime'>
 }
     

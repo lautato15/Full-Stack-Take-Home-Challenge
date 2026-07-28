@@ -40,7 +40,6 @@ export type PushMinAggregateOutputType = {
   id: number | null
   notificationId: number | null
   recipient: string | null
-  state: string | null
   sentAt: Date | null
 }
 
@@ -48,7 +47,6 @@ export type PushMaxAggregateOutputType = {
   id: number | null
   notificationId: number | null
   recipient: string | null
-  state: string | null
   sentAt: Date | null
 }
 
@@ -56,7 +54,6 @@ export type PushCountAggregateOutputType = {
   id: number
   notificationId: number
   recipient: number
-  state: number
   sentAt: number
   _all: number
 }
@@ -76,7 +73,6 @@ export type PushMinAggregateInputType = {
   id?: true
   notificationId?: true
   recipient?: true
-  state?: true
   sentAt?: true
 }
 
@@ -84,7 +80,6 @@ export type PushMaxAggregateInputType = {
   id?: true
   notificationId?: true
   recipient?: true
-  state?: true
   sentAt?: true
 }
 
@@ -92,7 +87,6 @@ export type PushCountAggregateInputType = {
   id?: true
   notificationId?: true
   recipient?: true
-  state?: true
   sentAt?: true
   _all?: true
 }
@@ -187,7 +181,6 @@ export type PushGroupByOutputType = {
   id: number
   notificationId: number
   recipient: string
-  state: string
   sentAt: Date | null
   _count: PushCountAggregateOutputType | null
   _avg: PushAvgAggregateOutputType | null
@@ -218,7 +211,6 @@ export type PushWhereInput = {
   id?: Prisma.IntFilter<"Push"> | number
   notificationId?: Prisma.IntFilter<"Push"> | number
   recipient?: Prisma.StringFilter<"Push"> | string
-  state?: Prisma.StringFilter<"Push"> | string
   sentAt?: Prisma.DateTimeNullableFilter<"Push"> | Date | string | null
   notification?: Prisma.XOR<Prisma.NotificationsScalarRelationFilter, Prisma.NotificationsWhereInput>
 }
@@ -227,7 +219,6 @@ export type PushOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   sentAt?: Prisma.SortOrderInput | Prisma.SortOrder
   notification?: Prisma.NotificationsOrderByWithRelationInput
 }
@@ -239,7 +230,6 @@ export type PushWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.PushWhereInput[]
   NOT?: Prisma.PushWhereInput | Prisma.PushWhereInput[]
   recipient?: Prisma.StringFilter<"Push"> | string
-  state?: Prisma.StringFilter<"Push"> | string
   sentAt?: Prisma.DateTimeNullableFilter<"Push"> | Date | string | null
   notification?: Prisma.XOR<Prisma.NotificationsScalarRelationFilter, Prisma.NotificationsWhereInput>
 }, "id" | "notificationId">
@@ -248,7 +238,6 @@ export type PushOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   sentAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.PushCountOrderByAggregateInput
   _avg?: Prisma.PushAvgOrderByAggregateInput
@@ -264,37 +253,32 @@ export type PushScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Push"> | number
   notificationId?: Prisma.IntWithAggregatesFilter<"Push"> | number
   recipient?: Prisma.StringWithAggregatesFilter<"Push"> | string
-  state?: Prisma.StringWithAggregatesFilter<"Push"> | string
   sentAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Push"> | Date | string | null
 }
 
 export type PushCreateInput = {
   recipient: string
-  state: string
   sentAt?: Date | string | null
-  notification: Prisma.NotificationsCreateNestedOneWithoutPushIdInput
+  notification: Prisma.NotificationsCreateNestedOneWithoutPushInput
 }
 
 export type PushUncheckedCreateInput = {
   id?: number
   notificationId: number
   recipient: string
-  state: string
   sentAt?: Date | string | null
 }
 
 export type PushUpdateInput = {
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  notification?: Prisma.NotificationsUpdateOneRequiredWithoutPushIdNestedInput
+  notification?: Prisma.NotificationsUpdateOneRequiredWithoutPushNestedInput
 }
 
 export type PushUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   notificationId?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -302,13 +286,11 @@ export type PushCreateManyInput = {
   id?: number
   notificationId: number
   recipient: string
-  state: string
   sentAt?: Date | string | null
 }
 
 export type PushUpdateManyMutationInput = {
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -316,7 +298,6 @@ export type PushUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   notificationId?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -329,7 +310,6 @@ export type PushCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   sentAt?: Prisma.SortOrder
 }
 
@@ -342,7 +322,6 @@ export type PushMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   sentAt?: Prisma.SortOrder
 }
 
@@ -350,7 +329,6 @@ export type PushMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   sentAt?: Prisma.SortOrder
 }
 
@@ -393,14 +371,12 @@ export type PushUncheckedUpdateOneWithoutNotificationNestedInput = {
 
 export type PushCreateWithoutNotificationInput = {
   recipient: string
-  state: string
   sentAt?: Date | string | null
 }
 
 export type PushUncheckedCreateWithoutNotificationInput = {
   id?: number
   recipient: string
-  state: string
   sentAt?: Date | string | null
 }
 
@@ -422,14 +398,12 @@ export type PushUpdateToOneWithWhereWithoutNotificationInput = {
 
 export type PushUpdateWithoutNotificationInput = {
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type PushUncheckedUpdateWithoutNotificationInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.StringFieldUpdateOperationsInput | string
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -439,7 +413,6 @@ export type PushSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   id?: boolean
   notificationId?: boolean
   recipient?: boolean
-  state?: boolean
   sentAt?: boolean
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["push"]>
@@ -448,7 +421,6 @@ export type PushSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   id?: boolean
   notificationId?: boolean
   recipient?: boolean
-  state?: boolean
   sentAt?: boolean
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["push"]>
@@ -457,7 +429,6 @@ export type PushSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   id?: boolean
   notificationId?: boolean
   recipient?: boolean
-  state?: boolean
   sentAt?: boolean
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["push"]>
@@ -466,11 +437,10 @@ export type PushSelectScalar = {
   id?: boolean
   notificationId?: boolean
   recipient?: boolean
-  state?: boolean
   sentAt?: boolean
 }
 
-export type PushOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "notificationId" | "recipient" | "state" | "sentAt", ExtArgs["result"]["push"]>
+export type PushOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "notificationId" | "recipient" | "sentAt", ExtArgs["result"]["push"]>
 export type PushInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
 }
@@ -490,7 +460,6 @@ export type $PushPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     id: number
     notificationId: number
     recipient: string
-    state: string
     sentAt: Date | null
   }, ExtArgs["result"]["push"]>
   composites: {}
@@ -919,7 +888,6 @@ export interface PushFieldRefs {
   readonly id: Prisma.FieldRef<"Push", 'Int'>
   readonly notificationId: Prisma.FieldRef<"Push", 'Int'>
   readonly recipient: Prisma.FieldRef<"Push", 'String'>
-  readonly state: Prisma.FieldRef<"Push", 'String'>
   readonly sentAt: Prisma.FieldRef<"Push", 'DateTime'>
 }
     

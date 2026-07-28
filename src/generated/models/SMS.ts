@@ -42,7 +42,6 @@ export type SmsMinAggregateOutputType = {
   id: number | null
   notificationId: number | null
   recipient: number | null
-  state: string | null
   sentAt: Date | null
 }
 
@@ -50,7 +49,6 @@ export type SmsMaxAggregateOutputType = {
   id: number | null
   notificationId: number | null
   recipient: number | null
-  state: string | null
   sentAt: Date | null
 }
 
@@ -58,7 +56,6 @@ export type SmsCountAggregateOutputType = {
   id: number
   notificationId: number
   recipient: number
-  state: number
   sentAt: number
   _all: number
 }
@@ -80,7 +77,6 @@ export type SmsMinAggregateInputType = {
   id?: true
   notificationId?: true
   recipient?: true
-  state?: true
   sentAt?: true
 }
 
@@ -88,7 +84,6 @@ export type SmsMaxAggregateInputType = {
   id?: true
   notificationId?: true
   recipient?: true
-  state?: true
   sentAt?: true
 }
 
@@ -96,7 +91,6 @@ export type SmsCountAggregateInputType = {
   id?: true
   notificationId?: true
   recipient?: true
-  state?: true
   sentAt?: true
   _all?: true
 }
@@ -191,7 +185,6 @@ export type SmsGroupByOutputType = {
   id: number
   notificationId: number
   recipient: number
-  state: string
   sentAt: Date | null
   _count: SmsCountAggregateOutputType | null
   _avg: SmsAvgAggregateOutputType | null
@@ -222,7 +215,6 @@ export type SmsWhereInput = {
   id?: Prisma.IntFilter<"Sms"> | number
   notificationId?: Prisma.IntFilter<"Sms"> | number
   recipient?: Prisma.IntFilter<"Sms"> | number
-  state?: Prisma.StringFilter<"Sms"> | string
   sentAt?: Prisma.DateTimeNullableFilter<"Sms"> | Date | string | null
   notification?: Prisma.XOR<Prisma.NotificationsScalarRelationFilter, Prisma.NotificationsWhereInput>
 }
@@ -231,7 +223,6 @@ export type SmsOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   sentAt?: Prisma.SortOrderInput | Prisma.SortOrder
   notification?: Prisma.NotificationsOrderByWithRelationInput
 }
@@ -243,7 +234,6 @@ export type SmsWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.SmsWhereInput[]
   NOT?: Prisma.SmsWhereInput | Prisma.SmsWhereInput[]
   recipient?: Prisma.IntFilter<"Sms"> | number
-  state?: Prisma.StringFilter<"Sms"> | string
   sentAt?: Prisma.DateTimeNullableFilter<"Sms"> | Date | string | null
   notification?: Prisma.XOR<Prisma.NotificationsScalarRelationFilter, Prisma.NotificationsWhereInput>
 }, "id" | "notificationId">
@@ -252,7 +242,6 @@ export type SmsOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   sentAt?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.SmsCountOrderByAggregateInput
   _avg?: Prisma.SmsAvgOrderByAggregateInput
@@ -268,37 +257,32 @@ export type SmsScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Sms"> | number
   notificationId?: Prisma.IntWithAggregatesFilter<"Sms"> | number
   recipient?: Prisma.IntWithAggregatesFilter<"Sms"> | number
-  state?: Prisma.StringWithAggregatesFilter<"Sms"> | string
   sentAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Sms"> | Date | string | null
 }
 
 export type SmsCreateInput = {
   recipient: number
-  state: string
   sentAt?: Date | string | null
-  notification: Prisma.NotificationsCreateNestedOneWithoutSmsIdInput
+  notification: Prisma.NotificationsCreateNestedOneWithoutSmsInput
 }
 
 export type SmsUncheckedCreateInput = {
   id?: number
   notificationId: number
   recipient: number
-  state: string
   sentAt?: Date | string | null
 }
 
 export type SmsUpdateInput = {
   recipient?: Prisma.IntFieldUpdateOperationsInput | number
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  notification?: Prisma.NotificationsUpdateOneRequiredWithoutSmsIdNestedInput
+  notification?: Prisma.NotificationsUpdateOneRequiredWithoutSmsNestedInput
 }
 
 export type SmsUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   notificationId?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.IntFieldUpdateOperationsInput | number
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -306,13 +290,11 @@ export type SmsCreateManyInput = {
   id?: number
   notificationId: number
   recipient: number
-  state: string
   sentAt?: Date | string | null
 }
 
 export type SmsUpdateManyMutationInput = {
   recipient?: Prisma.IntFieldUpdateOperationsInput | number
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -320,7 +302,6 @@ export type SmsUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   notificationId?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.IntFieldUpdateOperationsInput | number
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -333,7 +314,6 @@ export type SmsCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   sentAt?: Prisma.SortOrder
 }
 
@@ -347,7 +327,6 @@ export type SmsMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   sentAt?: Prisma.SortOrder
 }
 
@@ -355,7 +334,6 @@ export type SmsMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
   recipient?: Prisma.SortOrder
-  state?: Prisma.SortOrder
   sentAt?: Prisma.SortOrder
 }
 
@@ -399,14 +377,12 @@ export type SmsUncheckedUpdateOneWithoutNotificationNestedInput = {
 
 export type SmsCreateWithoutNotificationInput = {
   recipient: number
-  state: string
   sentAt?: Date | string | null
 }
 
 export type SmsUncheckedCreateWithoutNotificationInput = {
   id?: number
   recipient: number
-  state: string
   sentAt?: Date | string | null
 }
 
@@ -428,14 +404,12 @@ export type SmsUpdateToOneWithWhereWithoutNotificationInput = {
 
 export type SmsUpdateWithoutNotificationInput = {
   recipient?: Prisma.IntFieldUpdateOperationsInput | number
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type SmsUncheckedUpdateWithoutNotificationInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   recipient?: Prisma.IntFieldUpdateOperationsInput | number
-  state?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -445,7 +419,6 @@ export type SmsSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = ru
   id?: boolean
   notificationId?: boolean
   recipient?: boolean
-  state?: boolean
   sentAt?: boolean
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["sms"]>
@@ -454,7 +427,6 @@ export type SmsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extension
   id?: boolean
   notificationId?: boolean
   recipient?: boolean
-  state?: boolean
   sentAt?: boolean
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["sms"]>
@@ -463,7 +435,6 @@ export type SmsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extension
   id?: boolean
   notificationId?: boolean
   recipient?: boolean
-  state?: boolean
   sentAt?: boolean
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["sms"]>
@@ -472,11 +443,10 @@ export type SmsSelectScalar = {
   id?: boolean
   notificationId?: boolean
   recipient?: boolean
-  state?: boolean
   sentAt?: boolean
 }
 
-export type SmsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "notificationId" | "recipient" | "state" | "sentAt", ExtArgs["result"]["sms"]>
+export type SmsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "notificationId" | "recipient" | "sentAt", ExtArgs["result"]["sms"]>
 export type SmsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   notification?: boolean | Prisma.NotificationsDefaultArgs<ExtArgs>
 }
@@ -496,7 +466,6 @@ export type $SmsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
     id: number
     notificationId: number
     recipient: number
-    state: string
     sentAt: Date | null
   }, ExtArgs["result"]["sms"]>
   composites: {}
@@ -925,7 +894,6 @@ export interface SmsFieldRefs {
   readonly id: Prisma.FieldRef<"Sms", 'Int'>
   readonly notificationId: Prisma.FieldRef<"Sms", 'Int'>
   readonly recipient: Prisma.FieldRef<"Sms", 'Int'>
-  readonly state: Prisma.FieldRef<"Sms", 'String'>
   readonly sentAt: Prisma.FieldRef<"Sms", 'DateTime'>
 }
     
