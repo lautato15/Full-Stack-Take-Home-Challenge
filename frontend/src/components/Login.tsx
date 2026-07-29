@@ -25,20 +25,6 @@ function Login() {
     }
   };
 
-  //         {
-  //       url: "http://localhost:3000/login",
-  //       method: "POST",
-  //       data: { password, username },
-  //     });
-  //     /* console.log(response.data.error); */
-  //     if (response.data.token) {
-  //       dispatch(login(response.data));
-  //       navigate("/");
-  //     } else if (response.data.error) {
-  //       navigate(`/error404/${response.data.error}`);
-  //     }
-  //   };
-
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 ">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
