@@ -1,28 +1,20 @@
 import { useEffect, useState } from "react";
-import "./Login.css";
-function Login() {
+function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [emailValidation, setEmailValidation] = useState("");
   //   const dispatch = useDispatch();
   //   const navigate = useNavigate();
 
-  useEffect(() => {}, [email, password]);
-
+  useEffect(() => {
+    console.log(email, password);
+  }, [email, password]);
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim() || !password.trim()) {
-      setEmailValidation("Los campos son obligatorios");
-    } else {
-      console.log("Handle ON");
-      const response = await fetch("http://localhost:3000/auth", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password, email }),
-      });
-      const data = await response.json();
-      console.log(data);
-    }
+    const response = await fetch("http://localhost:3000/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password, email }),
+    });
   };
 
   //         {
@@ -53,12 +45,7 @@ function Login() {
       </div>
 
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm ">
-        <form
-          action="/login"
-          method="POST"
-          className="space-y-6"
-          onSubmit={handleSubmit}
-        >
+        <form action="#" method="POST" className="space-y-6">
           <div>
             <label
               htmlFor="email"
@@ -76,15 +63,10 @@ function Login() {
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
+                  console.log(e.target.value);
                 }}
                 className="block w-full  rounded-md bg-white/5 px-3 py-1.5 text-base text-black outline-1 -outline-offset-1 outline-white/10  border-solid border-2 border-black placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
               />
-              <label
-                htmlFor="email"
-                className="block text-sm/6 font-medium text-black-100 text-end text-red-500"
-              >
-                {emailValidation}
-              </label>
             </div>
           </div>
 
@@ -112,9 +94,6 @@ function Login() {
                 name="password"
                 required
                 autoComplete="current-password"
-                onChange={(e) => {
-                  setPassword(e.target.value);
-                }}
                 className="block border-black border-solid border-2 w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-black outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
               />
             </div>
@@ -123,9 +102,9 @@ function Login() {
           <div>
             <button
               type="submit"
-              className="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm/6 font-semibold text-white hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+              className="flex w-full justify-center rounded-md bg-indigo-500 px-3 py-1.5 text-sm/6 font-semibold text-black hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
             >
-              Loguearse
+              Sign in
             </button>
           </div>
         </form>
@@ -144,4 +123,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
