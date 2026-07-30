@@ -23,7 +23,7 @@ function Login() {
         if (!token) {
           toast.error("Error interno del sistema, vuelva a intentarlo");
           console.log({ message: "Error al obtener token", token: token });
-        } else setToken(token);
+        } else if (token !== "off") setToken(token);
       } else {
         const token = register(email, password);
         toast.error("Error interno del sistema, vuelva a intentarlo");

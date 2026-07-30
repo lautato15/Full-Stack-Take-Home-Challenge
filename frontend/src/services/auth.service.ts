@@ -8,11 +8,15 @@ export async function login(email: string, password: string) {
       body: JSON.stringify({ password, email }),
     });
     const data = await response.json();
-    if (data.message === "Credenciales incorrectas") toast.error(data.message);
+    if (data.message === "Credenciales incorrectas") {
+      toast.error(data.message);
+      return "off";
+    }
     if (data.access_token) return data.access_token;
   } catch (error) {
     toast.error("Fallo la conexion con el servidor");
-    console.log(error);
+    console.log("Fallo la llamada al Servidor");
+    return "off";
   }
 }
 
@@ -26,10 +30,13 @@ export async function register(email: string, password: string) {
     const data = await response.json();
     if (data.message === "El email ya está registrado")
       toast.error("El email ya esta registrado");
-    else if (Array.isArray(data.message)) toast.error(data.message[0]);
-    else if (data.access_token) return data.access_token;
+    else if (Array.isArray(data.message)) {
+      toast.error(data.message[0]);
+      return "off";
+    } else if (data.access_token) return data.access_token;
   } catch (error) {
     toast.error("Fallo la conexion con el servidor");
-    console.log(error);
+    console.log("Fallo la llamada al Servidor");
+    return "off";
   }
 }

@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import "./App.css";
 import Login from "./components/Login";
 import { ToastContainer } from "react-toastify";
+import Dashboard from "./components/Dashboard";
 
 export const AuthContext = createContext<AuthContextType | null>({
   token: null,
@@ -22,7 +23,7 @@ function App() {
 
       <AuthContext.Provider value={{ token, setToken }}>
         {!token && <Login />}
-        {token && "Estas logueado"}
+        {token && <Dashboard />}
       </AuthContext.Provider>
     </>
   );

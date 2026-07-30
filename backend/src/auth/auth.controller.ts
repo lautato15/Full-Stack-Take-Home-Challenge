@@ -13,7 +13,6 @@ export class AuthController {
   @Post('/auth')
   async login(@Request() req) {
     console.log('4 - AuthController');
-    console.log(req.user);
     return this.authService.login(req.user);
   }
 
