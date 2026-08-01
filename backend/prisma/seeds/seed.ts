@@ -26,7 +26,8 @@ async function main() {
       data: {
         authorId: admin.id,
         title: 'Email de bienvenida',
-        content: 'Bienvenido',
+        content:
+          'Bienvenido a nuestro canal sobre programación, estamos muy contentos de que estes aca...',
         channel: 'EMAIL',
 
         email: {
@@ -76,7 +77,7 @@ async function main() {
         channel: 'EMAIL',
         email: {
           create: {
-            recipient: '4jK9sW2mX8pQ5vL3nB7z',
+            recipient: 'todos@mail.com',
             sentAt: null,
           },
         },

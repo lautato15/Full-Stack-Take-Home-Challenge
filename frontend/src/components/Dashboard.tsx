@@ -1,4 +1,15 @@
-function Dashboard() {
+import { useEffect, useState } from "react";
+import { getNotifications } from "../services/notifications.service";
+import type { Token } from "../types/notification";
+import NotificationRow from "./NotificationRow";
+import type { Notification } from "../types/notification";
+
+function Dashboard({ token }: Token) {
+  const [notifications, setNotifications] = useState<Notification[]>([]);
+
+  useEffect(() => {
+    getNotifications(token, setNotifications);
+  }, [token]);
   return (
     <>
       <div className="mx-auto mt-10 w-full max-w-7xl rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
@@ -8,12 +19,12 @@ function Dashboard() {
               Panel Principal
             </h1>
             <p className="mt-2 text-gray-600">
-              Manage all notifications created in your account.
+              Maneja todas las notificaciones creadas en tu cuenta.
             </p>
           </div>
 
           <button className="rounded-lg bg-indigo-600 px-5 py-2.5 font-medium text-white transition hover:bg-indigo-700">
-            New notification
+            Nueva notificacion
           </button>
         </div>
 
@@ -21,31 +32,43 @@ function Dashboard() {
           <table className="min-w-full">
             <thead className="border-b border-gray-200">
               <tr>
-                <th className="py-4 text-left text-sm font-semibold text-gray-900">
-                  Title
+                <th className="py-4 text-left text-sm font-semibold text-gray-900 w-2/12">
+                  Título
+                </th>
+
+                <th className="py-4 text-left text-sm font-semibold text-gray-900 w-3/10">
+                  Contenido
                 </th>
 
                 <th className="py-4 text-left text-sm font-semibold text-gray-900">
-                  Content
+                  Canal
+                </th>
+                <th className="py-4 text-left text-sm font-semibold text-gray-900 w-1/8">
+                  Destinatario
+                </th>
+                <th className="py-4 text-left text-sm font-semibold text-gray-900">
+                  Estado
                 </th>
 
                 <th className="py-4 text-left text-sm font-semibold text-gray-900">
-                  Channel
+                  Enviado
                 </th>
-
-                <th className="py-4 text-left text-sm font-semibold text-gray-900">
-                  Status
-                </th>
-
-                <th className="py-4 text-left text-sm font-semibold text-gray-900">
-                  Created
-                </th>
-
                 <th className="py-4"></th>
               </tr>
             </thead>
 
             <tbody className="divide-y divide-gray-200">
+              {notifications.map((notification) => (
+                <NotificationRow
+                  key={notification.id}
+                  title={notification.title}
+                  content={notification.content}
+                  channel={notification.channel}
+                  recipient={notification.recipient}
+                  sentAt={notification.sentAt}
+                />
+              ))}
+              {/* Hardcoding
               <tr className="hover:bg-gray-50">
                 <td className="py-5 font-medium text-gray-900">
                   Welcome Email
@@ -56,6 +79,11 @@ function Dashboard() {
                 <td className="py-5">
                   <span className="rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-700">
                     EMAIL
+                  </span>
+                </td>
+                <td className="py-5">
+                  <span className="rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-700">
+                    Jorge@mail.com
                   </span>
                 </td>
 
@@ -88,7 +116,11 @@ function Dashboard() {
                     SMS
                   </span>
                 </td>
-
+                <td className="py-5">
+                  <span className="rounded-full bg-yellow-100  px-3 py-1 text-sm font-medium text-yellow-700">
+                    12345678
+                  </span>
+                </td>
                 <td className="py-5">
                   <span className="rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-700">
                     SENT
@@ -116,7 +148,11 @@ function Dashboard() {
                     PUSH
                   </span>
                 </td>
-
+                <td className="py-5">
+                  <span className="rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-700">
+                    4jK9sW2mX8pQ5vL3nB7z{" "}
+                  </span>
+                </td>
                 <td className="py-5">
                   <span className="rounded-full bg-red-100 px-3 py-1 text-sm font-medium text-red-700">
                     FAILED
@@ -134,7 +170,7 @@ function Dashboard() {
                     Delete
                   </button>
                 </td>
-              </tr>
+              </tr> */}
             </tbody>
           </table>
         </div>

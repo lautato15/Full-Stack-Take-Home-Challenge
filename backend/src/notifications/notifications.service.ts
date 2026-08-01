@@ -11,7 +11,10 @@ import { SmsService } from './sms/sms.service';
 import { PushService } from './push/push.service';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
 import { Prisma } from 'src/generated/client';
-import { error } from 'console';
+import {
+  unstructuredNotifications,
+  unstructuredNotification,
+} from './unstructuredFunction';
 
 @Injectable()
 export class NotificationsService {
@@ -95,7 +98,11 @@ export class NotificationsService {
     });
     if (!notifications)
       throw new BadRequestException('No existen notificaciones.');
-    return { msg: 'Sus notificaciones:', notifications: notifications };
+    const notificationsUnstructured = unstructuredNotifications(notifications);
+    return {
+      msg: 'Sus notificaciones:',
+      notifications: notificationsUnstructured,
+    };
   }
 
   async findOneNotification(idNotification: number, sub: number) {
@@ -111,7 +118,7 @@ export class NotificationsService {
       },
     });
     if (!notification) return { msg: 'No se encontro la Notificacion.' };
-    return notification;
+    return unstructuredNotification(notification);
   }
 
   async updateNotification(
@@ -160,9 +167,6 @@ export class NotificationsService {
         sentAt = this.smsService.sendSMS(updateNotificationDto, user);
         break;
     }
-    console.log('Sending');
-    console.log(sentAt);
-
     const services = {
       email: {
         update: {
@@ -200,7 +204,7 @@ export class NotificationsService {
     });
     if (!updateNotification)
       throw new NotFoundException('No se pudo actualizar la Notificacion');
-    return updateNotification;
+    return unstructuredNotification(updateNotification);
   }
 
   async removeNotification(idNotification: number, sub: number) {

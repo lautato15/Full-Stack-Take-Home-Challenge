@@ -31,7 +31,7 @@ export class CreateNotificationDto {
   content!: string;
 
   @ApiProperty({
-    example: ['EMAIL', 'SMS', 'PUSH'],
+    enum: ['EMAIL', 'SMS', 'PUSH'],
     description:
       'Canal por el cual se enviara la notificacion, solo se admiten los valores: "EMAIL", "SMS", "PUSH"',
   })

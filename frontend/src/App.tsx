@@ -23,7 +23,7 @@ function App() {
 
       <AuthContext.Provider value={{ token, setToken }}>
         {!token && <Login />}
-        {token && <Dashboard />}
+        {token && <Dashboard token={token} />}
       </AuthContext.Provider>
     </>
   );

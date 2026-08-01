@@ -44,7 +44,7 @@ model Email {
 model Sms{
   id Int @id @default(autoincrement())
   notificationId Int @unique
-  recipient Int 
+  recipient String 
   sentAt DateTime ?
   notification Notifications @relation(fields:[notificationId], references:[id], onDelete: Cascade)
 }
