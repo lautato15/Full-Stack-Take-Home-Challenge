@@ -6,15 +6,23 @@ export type Notification = {
   recipient: string;
   sentAt: Date | null;
 };
-// export type NotificationStructured = {
-//   title: string;
-//   content: string;
-//   channel: string;
-//   email: { recipient: string; sentAt: string | null } | null;
-//   sms: { recipient: string; sentAt: string | null } | null;
-//   push: { recipient: string; sentAt: string | null } | null;
-// };
+
+export type CreateNotificaction = {
+  title: string;
+  content: string;
+  channel: "EMAIL" | "SMS" | "PUSH";
+  recipient: string;
+};
 
 export interface Token {
   token: string;
 }
+
+export type Channel = "EMAIL" | "SMS" | "PUSH";
+
+export type CreateNotificationForm = {
+  title: string;
+  content: string;
+  channel: Channel;
+  recipient: string;
+};

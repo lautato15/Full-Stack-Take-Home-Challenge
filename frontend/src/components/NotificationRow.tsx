@@ -14,7 +14,7 @@ function NotificationRow({
   };
   const bgColor = colorChannel[channel];
   return (
-    <tr className="hover:bg-gray-50">
+    <tr className="hover:bg-gray-50 gap-1">
       <td className="py-5 font-medium text-gray-900">{title}</td>
 
       <td className="py-5 text-gray-600 px-0.5">{content}</td>
@@ -43,14 +43,19 @@ function NotificationRow({
         {sentAt ? sentAt.toLocaleDateString() : null}
       </td>
 
-      <td className="py-5 text-right flex justify-around ">
-        <button className="font-medium text-indigo-600 hover:text-indigo-800">
-          {!sentAt && "Edit"}
-        </button>
-        <button className="font-medium text-red-600 hover:text-red-800">
-          {!sentAt && "Delete"}
-        </button>
-      </td>
+      {!sentAt && (
+        <td className="py-5 text-right flex flex-col justify-around ">
+          <button className="font-medium text-indigo-600 hover:text-indigo-800">
+            Enviar
+          </button>
+          <button className="font-medium text-indigo-600 hover:text-indigo-800">
+            Edit
+          </button>
+          <button className="font-medium text-red-600 hover:text-red-800">
+            Delete
+          </button>
+        </td>
+      )}
     </tr>
   );
 }

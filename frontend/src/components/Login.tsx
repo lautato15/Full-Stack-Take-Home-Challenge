@@ -1,19 +1,16 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../App";
+import { useAuth } from "../AuthContext";
 import { toast } from "react-toastify";
 import { login, register } from "../services/auth.service";
+import { useState } from "react";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [flagLog, setFlagLog] = useState<Boolean>(true); //Login: true Register: false
-  const auth = useContext(AuthContext);
 
-  if (!auth) throw new Error("AuthContext no encontrado");
+  const { setToken } = useAuth();
 
-  const { setToken } = auth;
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!email.trim() || !password.trim()) {
       toast.error("Los campos son obligatorios");
@@ -30,7 +27,7 @@ function Login() {
         console.log({ message: "Error al obtener token", token: token });
       }
     }
-  };
+  }
   return (
     <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 ">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">

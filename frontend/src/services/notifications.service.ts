@@ -1,5 +1,6 @@
 import { toast } from "react-toastify";
-import type { Notification } from "../types/notification";
+import type { CreateNotificaction, Notification } from "../types/notification";
+import { parseRecipient } from "./parseRecipient";
 
 export async function getNotifications(
   token: string,
@@ -21,4 +22,23 @@ export async function getNotifications(
   });
   setNotification(parseDates);
   return parseDates;
+}
+
+export async function createNotification(
+  notification: CreateNotificaction,
+  token: string,
+) {
+  const parseNotificationSend = parseRecipient(notification);
+  const response = await fetch("http://localhost:3000/notifications", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(parseNotificationSend),
+  });
+  const result = await response.json();
+  console.log(result);
+  console.log(response.status);
+  if (response.status === 201) toast.info(result.msg);
 }

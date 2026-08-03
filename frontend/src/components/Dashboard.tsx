@@ -1,13 +1,26 @@
 import { useEffect, useState } from "react";
 import { getNotifications } from "../services/notifications.service";
-import type { Token } from "../types/notification";
 import NotificationRow from "./NotificationRow";
 import type { Notification } from "../types/notification";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../AuthContext";
+import { toast } from "react-toastify";
 
-function Dashboard({ token }: Token) {
+function Dashboard() {
+  const navigate = useNavigate();
   const [notifications, setNotifications] = useState<Notification[]>([]);
+  const { token } = useAuth();
+
+  function handleNewNotification() {
+    navigate("/notifications/new");
+  }
 
   useEffect(() => {
+    if (!token) {
+      toast.error("Error de credenciales, sera redirigido al /Login");
+      navigate("/login");
+      return;
+    }
     getNotifications(token, setNotifications);
   }, [token]);
   return (
@@ -23,7 +36,10 @@ function Dashboard({ token }: Token) {
             </p>
           </div>
 
-          <button className="rounded-lg bg-indigo-600 px-5 py-2.5 font-medium text-white transition hover:bg-indigo-700">
+          <button
+            onClick={handleNewNotification}
+            className="rounded-lg bg-indigo-600 px-5 py-2.5 font-medium text-white transition hover:bg-indigo-700"
+          >
             Nueva notificacion
           </button>
         </div>
