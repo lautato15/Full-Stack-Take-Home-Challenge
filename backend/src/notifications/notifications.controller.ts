@@ -44,6 +44,8 @@ export class NotificationsController {
     )
       createNotificationDto.content.slice(0, 160);
 
+    console.log('Controller de Create');
+    console.log(createNotificationDto);
     switch (createNotificationDto.channel) {
       case 'EMAIL':
         if (createNotificationDto.email)

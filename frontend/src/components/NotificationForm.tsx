@@ -6,6 +6,8 @@ import {
 } from "../types/notification";
 import { createNotification } from "../services/notifications.service";
 import { useAuth } from "../AuthContext";
+import { toast } from "react-toastify";
+import NotificationToast from "./NotificationToast";
 
 function NotificationForm() {
   const navigate = useNavigate();
@@ -23,12 +25,17 @@ function NotificationForm() {
     PUSH: "Ingrese un token valido...",
   };
 
-  function handleSubmitNotification(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmitNotification(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const dataValidate = Object.values(form).every(
       (value) => value.trim() !== "",
     );
-    if (dataValidate && token) createNotification(form, token);
+    if (dataValidate && token) {
+      const result = await createNotification(form, token);
+      if (result.status === 201)
+        toast.success(<NotificationToast notification={result} />);
+      else toast.error(result.msg);
+    }
   }
   function handleCancel() {
     navigate("/dashboard");

@@ -31,58 +31,54 @@ export class NotificationsService {
     sentAt: Date | null,
   ) {
     console.log('3 - CreateNotification');
-
-    const notification = await this.prisma.notifications.create({
-      data: {
-        title: createNotificationDto.title,
-        content: createNotificationDto.content,
-        channel: createNotificationDto.channel,
-        authorId: user.sub,
-      },
-    });
-
-    let notificationChannel;
+    let data: Prisma.NotificationsUncheckedCreateInput = {
+      title: createNotificationDto.title,
+      content: createNotificationDto.content,
+      channel: createNotificationDto.channel,
+      authorId: user.sub,
+    };
     switch (createNotificationDto.channel) {
       case 'EMAIL':
-        notificationChannel = this.prisma.email.create({
-          data: {
-            notificationId: notification.id,
+        data.email = {
+          create: {
             recipient: createNotificationDto.email!,
-            sentAt: sentAt,
+            sentAt,
           },
-        });
+        };
         break;
       case 'SMS':
-        notificationChannel = this.prisma.sms.create({
-          data: {
-            notificationId: notification.id,
-            recipient: Number(createNotificationDto.phone)!,
-            sentAt: sentAt,
+        data.sms = {
+          create: {
+            recipient: createNotificationDto.phone!,
+            sentAt,
           },
-        });
+        };
         break;
       case 'PUSH':
-        notificationChannel = this.prisma.push.create({
-          data: {
-            notificationId: notification.id,
+        data.push = {
+          create: {
             recipient: createNotificationDto.token!,
-            sentAt: sentAt,
+            sentAt,
           },
-        });
-        break;
-      default:
-        throw new NotFoundException(
-          'Error interno en los servicios de Notificaciones',
-        );
+        };
     }
-    notificationChannel = await notificationChannel;
-    if (notification && notificationChannel)
-      return {
-        msg: 'Notificacion creada con exito',
-        notification: notification,
-        channel: notificationChannel,
-      };
-    throw new NotFoundException('No se pudo crear la notificacion');
+    const newNotification = await this.prisma.notifications.create({
+      data,
+      include: {
+        email: true,
+        sms: true,
+        push: true,
+      },
+    });
+   
+    if (!newNotification)
+      throw new NotFoundException('No se pudo crear la notificacion');
+    else {
+      const notificationUnstructured =
+        unstructuredNotification(newNotification);
+      return notificationUnstructured;
+    }
+
   }
 
   async findAllNotifications(sub: number) {
@@ -99,10 +95,8 @@ export class NotificationsService {
     if (!notifications)
       throw new BadRequestException('No existen notificaciones.');
     const notificationsUnstructured = unstructuredNotifications(notifications);
-    return {
-      msg: 'Sus notificaciones:',
-      notifications: notificationsUnstructured,
-    };
+    return notificationsUnstructured;
+  
   }
 
   async findOneNotification(idNotification: number, sub: number) {
@@ -164,7 +158,7 @@ export class NotificationsService {
         sentAt = this.smsService.sendSMS(updateNotificationDto, user);
         break;
       case 'PUSH':
-        sentAt = this.smsService.sendSMS(updateNotificationDto, user);
+        sentAt = this.pushService.sendPush(updateNotificationDto, user);
         break;
     }
     const services = {

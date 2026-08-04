@@ -1,4 +1,3 @@
-import { toast } from "react-toastify";
 import type { CreateNotificaction, Notification } from "../types/notification";
 import { parseRecipient } from "./parseRecipient";
 
@@ -12,10 +11,7 @@ export async function getNotifications(
       Authorization: `Bearer ${token}`,
     },
   });
-  type Response = {
-    notifications: Notification[];
-  };
-  const { notifications }: Response = await response.json();
+  const notifications: Notification[] = await response.json();
   const parseDates = notifications.map((n) => {
     if (n.sentAt) return { ...n, sentAt: new Date(n.sentAt) };
     else return n;
@@ -38,7 +34,5 @@ export async function createNotification(
     body: JSON.stringify(parseNotificationSend),
   });
   const result = await response.json();
-  console.log(result);
-  console.log(response.status);
-  if (response.status === 201) toast.info(result.msg);
+  return { status: response.status, ...result };
 }

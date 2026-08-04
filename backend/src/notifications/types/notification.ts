@@ -37,3 +37,5 @@ export type NotificationUnstructured = {
 export interface Token {
   token: string;
 }
+
+

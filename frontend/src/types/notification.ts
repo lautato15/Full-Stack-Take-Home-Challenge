@@ -26,3 +26,4 @@ export type CreateNotificationForm = {
   channel: Channel;
   recipient: string;
 };
+
