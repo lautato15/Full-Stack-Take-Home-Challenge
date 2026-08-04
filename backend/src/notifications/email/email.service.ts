@@ -11,7 +11,8 @@ export class EmailService {
       subject: notificationDto.title,
       content: notificationDto.content,
     };
-    const sent = Boolean(Math.floor(Math.random() * 2));
+    // const sent = Boolean(Math.floor(Math.random() * 2));
+    const sent = false
     return sent ? new Date() : null;
   }
 }

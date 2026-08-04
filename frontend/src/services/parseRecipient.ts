@@ -1,4 +1,4 @@
-import type { CreateNotificaction } from "../types/notification";
+import type { CreateNotificaction } from "../types/types";
 
 export function parseRecipient(notification: CreateNotificaction) {
   const { recipient, ...rest } = notification;
@@ -20,4 +20,3 @@ export function parseRecipient(notification: CreateNotificaction) {
       };
   }
 }
-

@@ -1,5 +1,5 @@
 export type Notification = {
-  id?: string;
+  id: number;
   title: string;
   content: string;
   channel: "EMAIL" | "SMS" | "PUSH";
@@ -7,7 +7,8 @@ export type Notification = {
   sentAt: Date | null;
 };
 
-export type CreateNotificaction = {
+export type SendNotificaction = {
+  id?: number;
   title: string;
   content: string;
   channel: "EMAIL" | "SMS" | "PUSH";
@@ -27,3 +28,14 @@ export type CreateNotificationForm = {
   recipient: string;
 };
 
+export type IconProps = {
+  size?: number;
+  className?: string;
+};
+
+export type NotificationRowProps = {
+  notification: Notification;
+  onDelete: (id: number) => Promise<void>;
+  onSend: (id: number) => Promise<void>;
+  onEdit: (notification: Notification) => Promise<void>;
+};

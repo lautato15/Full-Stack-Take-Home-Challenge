@@ -47,7 +47,7 @@ async function main() {
 
         sms: {
           create: {
-            recipient: 87654321,
+            recipient: '87654321',
             sentAt: new Date(),
           },
         },

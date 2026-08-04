@@ -1,27 +1,52 @@
 import { useEffect, useState } from "react";
-import { getNotifications } from "../services/notifications.service";
+import {
+  deleteNotification,
+  getNotifications,
+} from "../services/notifications.service";
 import NotificationRow from "./NotificationRow";
-import type { Notification } from "../types/notification";
+import type { Notification } from "../types/types";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../AuthContext";
 import { toast } from "react-toastify";
+import NotificationToast from "./NotificationToast";
 
 function Dashboard() {
   const navigate = useNavigate();
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const { token } = useAuth();
 
+  async function loadNotifications() {
+    if (!token) return;
+    const data = await getNotifications(token);
+    setNotifications(data);
+  }
+
   function handleNewNotification() {
     navigate("/notifications/new");
   }
+  async function handleSendNotification(id: number) {}
 
+  async function handleEditNotification(notification: Notification) {
+    navigate(`/notifications/${notification.id}/edit`, { state: notification });
+  }
+
+  async function handleDeleteNotification(id: number) {
+    if (token) {
+      const result = await deleteNotification(id, token);
+      loadNotifications();
+      if (result.status === 200)
+        toast.info(
+          <NotificationToast notification={result} msg={"eliminada"} />,
+        );
+    }
+  }
   useEffect(() => {
     if (!token) {
       toast.error("Error de credenciales, sera redirigido al /Login");
       navigate("/login");
       return;
     }
-    getNotifications(token, setNotifications);
+    loadNotifications();
   }, [token]);
   return (
     <>
@@ -77,116 +102,12 @@ function Dashboard() {
               {notifications.map((notification) => (
                 <NotificationRow
                   key={notification.id}
-                  title={notification.title}
-                  content={notification.content}
-                  channel={notification.channel}
-                  recipient={notification.recipient}
-                  sentAt={notification.sentAt}
+                  notification={notification}
+                  onDelete={handleDeleteNotification}
+                  onSend={handleSendNotification}
+                  onEdit={handleEditNotification}
                 />
               ))}
-              {/* Hardcoding
-              <tr className="hover:bg-gray-50">
-                <td className="py-5 font-medium text-gray-900">
-                  Welcome Email
-                </td>
-
-                <td className="py-5 text-gray-600">Welcome to our platform!</td>
-
-                <td className="py-5">
-                  <span className="rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-700">
-                    EMAIL
-                  </span>
-                </td>
-                <td className="py-5">
-                  <span className="rounded-full bg-blue-100 px-3 py-1 text-sm font-medium text-blue-700">
-                    Jorge@mail.com
-                  </span>
-                </td>
-
-                <td className="py-5">
-                  <span className="rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-700">
-                    SENT
-                  </span>
-                </td>
-
-                <td className="py-5 text-gray-500">29/07/2026</td>
-
-                <td className="py-5 text-right">
-                  <button className="font-medium text-indigo-600 hover:text-indigo-800">
-                    Edit
-                  </button>
-                </td>
-              </tr>
-
-              <tr className="hover:bg-gray-50">
-                <td className="py-5 font-medium text-gray-900">
-                  Verification Code
-                </td>
-
-                <td className="py-5 text-gray-600">
-                  Your verification code is 123456.
-                </td>
-
-                <td className="py-5">
-                  <span className="rounded-full bg-yellow-100 px-3 py-1 text-sm font-medium text-yellow-700">
-                    SMS
-                  </span>
-                </td>
-                <td className="py-5">
-                  <span className="rounded-full bg-yellow-100  px-3 py-1 text-sm font-medium text-yellow-700">
-                    12345678
-                  </span>
-                </td>
-                <td className="py-5">
-                  <span className="rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-700">
-                    SENT
-                  </span>
-                </td>
-
-                <td className="py-5 text-gray-500">28/07/2026</td>
-
-                <td className="py-5 text-right">
-                  <button className="font-medium text-indigo-600 hover:text-indigo-800">
-                    Edit
-                  </button>
-                </td>
-              </tr>
-
-              <tr className="hover:bg-gray-50">
-                <td className="py-5 font-medium text-gray-900">Promotion</td>
-
-                <td className="py-5 text-gray-600">
-                  Don't miss our new discounts.
-                </td>
-
-                <td className="py-5">
-                  <span className="rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-700">
-                    PUSH
-                  </span>
-                </td>
-                <td className="py-5">
-                  <span className="rounded-full bg-purple-100 px-3 py-1 text-sm font-medium text-purple-700">
-                    4jK9sW2mX8pQ5vL3nB7z{" "}
-                  </span>
-                </td>
-                <td className="py-5">
-                  <span className="rounded-full bg-red-100 px-3 py-1 text-sm font-medium text-red-700">
-                    FAILED
-                  </span>
-                </td>
-
-                <td className="py-5 text-gray-500">27/07/2026</td>
-
-                <td className="py-5 text-right space-x-4">
-                  <button className="font-medium text-indigo-600 hover:text-indigo-800">
-                    Edit
-                  </button>
-
-                  <button className="font-medium text-red-600 hover:text-red-800">
-                    Delete
-                  </button>
-                </td>
-              </tr> */}
             </tbody>
           </table>
         </div>

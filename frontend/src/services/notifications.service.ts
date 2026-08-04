@@ -1,37 +1,63 @@
-import type { CreateNotificaction, Notification } from "../types/notification";
+import type { SendNotificaction, Notification } from "../types/types";
 import { parseRecipient } from "./parseRecipient";
+const API_URL = `${import.meta.env.VITE_API_URL}/notifications`;
 
-export async function getNotifications(
-  token: string,
-  setNotification: React.Dispatch<React.SetStateAction<Notification[]>>,
-) {
-  const response = await fetch("http://localhost:3000/notifications", {
+export async function getNotifications(token: string) {
+  const response = await fetch(API_URL, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${token}`,
     },
   });
   const notifications: Notification[] = await response.json();
-  const parseDates = notifications.map((n) => {
+  const parseNotifications = notifications.map((n) => {
     if (n.sentAt) return { ...n, sentAt: new Date(n.sentAt) };
     else return n;
   });
-  setNotification(parseDates);
-  return parseDates;
+  return parseNotifications;
 }
 
 export async function createNotification(
-  notification: CreateNotificaction,
+  notification: SendNotificaction,
   token: string,
 ) {
   const parseNotificationSend = parseRecipient(notification);
-  const response = await fetch("http://localhost:3000/notifications", {
+  const response = await fetch(API_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(parseNotificationSend),
+  });
+  const result = await response.json();
+  return { status: response.status, ...result };
+}
+export async function updateNotification(
+  notification: SendNotificaction,
+  token: string,
+) {
+  const parseNotificationSend = parseRecipient(notification);
+  const response = await fetch(`${API_URL}/${notification.id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(parseNotificationSend),
+  });
+  const result = await response.json();
+  return { status: response.status, ...result };
+}
+export async function deleteNotification(
+  idNotification: number,
+  token: string,
+) {
+  const response = await fetch(`${API_URL}/${idNotification}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
   });
   const result = await response.json();
   return { status: response.status, ...result };

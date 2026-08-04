@@ -1,8 +1,8 @@
 import { toast } from "react-toastify";
-
+const API_URL = import.meta.env.VITE_API_URL;
 export async function login(email: string, password: string) {
   try {
-    const response = await fetch("http://localhost:3000/auth", {
+    const response = await fetch(`${API_URL}/auth`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ password, email }),
@@ -22,7 +22,7 @@ export async function login(email: string, password: string) {
 
 export async function register(email: string, password: string) {
   try {
-    const response = await fetch("http://localhost:3000/register", {
+    const response = await fetch(`${API_URL}/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ password, email }),

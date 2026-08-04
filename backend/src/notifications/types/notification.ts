@@ -7,7 +7,7 @@ export type NotificationStructured = {
   } | null;
   sms: {
     id: number;
-    recipient: number;
+    recipient: string;
     sentAt: Date | null;
     notificationId: number;
   } | null;

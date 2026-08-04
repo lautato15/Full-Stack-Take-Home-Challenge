@@ -1,24 +1,43 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { type CreateNotificationForm, type Channel } from "../types/types";
 import {
-  type CreateNotificationForm,
-  type Channel,
-} from "../types/notification";
-import { createNotification } from "../services/notifications.service";
+  createNotification,
+  updateNotification,
+} from "../services/notifications.service";
 import { useAuth } from "../AuthContext";
 import { toast } from "react-toastify";
 import NotificationToast from "./NotificationToast";
+import type { Notification } from "../types/types";
 
 function NotificationForm() {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const notification = location.state as Notification;
   const [channelSelect, setChannelSelect] = useState<Channel>("EMAIL");
+  const [flag, setFlag] = useState<"nueva " | "actualizar ">("nueva ");
   const { token } = useAuth();
+
   const [form, setForm] = useState<CreateNotificationForm>({
     title: "",
     content: "",
     channel: "EMAIL",
     recipient: "",
   });
+
+  useEffect(() => {
+    if (notification) {
+      setForm({
+        title: notification.title,
+        content: notification.content,
+        channel: notification.channel,
+        recipient: notification.recipient,
+      });
+      setFlag("actualizar ");
+    }
+  }, []);
+
   const ChannelPlaceholder = {
     EMAIL: "Ingrese su correo...",
     SMS: "Ingrese un número de Celular...",
@@ -31,10 +50,23 @@ function NotificationForm() {
       (value) => value.trim() !== "",
     );
     if (dataValidate && token) {
-      const result = await createNotification(form, token);
-      if (result.status === 201)
-        toast.success(<NotificationToast notification={result} />);
-      else toast.error(result.msg);
+      if (notification) {
+        const result = await createNotification(form, token);
+        if (result.status === 201) {
+          toast.success(
+            <NotificationToast notification={result} msg={"creada"} />,
+          );
+          navigate("/dashboard");
+        } else toast.error(result.msg);
+      } else {
+        const result = await updateNotification(form, token);
+        if (result.status === 201) {
+          toast.success(
+            <NotificationToast notification={result} msg={"creada"} />,
+          );
+          navigate("/dashboard");
+        } else toast.error(result.msg);
+      }
     }
   }
   function handleCancel() {
@@ -45,11 +77,12 @@ function NotificationForm() {
       <div className="mx-auto max-w-3xl p-8">
         <div className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
           <h1 className="text-3xl font-bold text-gray-900">
-            Nueva notificación
+            {flag.toUpperCase()} NOTIFICACION
           </h1>
 
           <p className="mt-2 text-gray-500">
-            Completa los datos para crear una nueva notificación.
+            Completa los datos para {flag}
+            notificación una nueva notificación.
           </p>
 
           <form className="mt-8 space-y-6" onSubmit={handleSubmitNotification}>

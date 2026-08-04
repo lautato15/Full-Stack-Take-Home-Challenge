@@ -29,26 +29,24 @@ export type AggregateSms = {
 export type SmsAvgAggregateOutputType = {
   id: number | null
   notificationId: number | null
-  recipient: number | null
 }
 
 export type SmsSumAggregateOutputType = {
   id: number | null
   notificationId: number | null
-  recipient: number | null
 }
 
 export type SmsMinAggregateOutputType = {
   id: number | null
   notificationId: number | null
-  recipient: number | null
+  recipient: string | null
   sentAt: Date | null
 }
 
 export type SmsMaxAggregateOutputType = {
   id: number | null
   notificationId: number | null
-  recipient: number | null
+  recipient: string | null
   sentAt: Date | null
 }
 
@@ -64,13 +62,11 @@ export type SmsCountAggregateOutputType = {
 export type SmsAvgAggregateInputType = {
   id?: true
   notificationId?: true
-  recipient?: true
 }
 
 export type SmsSumAggregateInputType = {
   id?: true
   notificationId?: true
-  recipient?: true
 }
 
 export type SmsMinAggregateInputType = {
@@ -184,7 +180,7 @@ export type SmsGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs
 export type SmsGroupByOutputType = {
   id: number
   notificationId: number
-  recipient: number
+  recipient: string
   sentAt: Date | null
   _count: SmsCountAggregateOutputType | null
   _avg: SmsAvgAggregateOutputType | null
@@ -214,7 +210,7 @@ export type SmsWhereInput = {
   NOT?: Prisma.SmsWhereInput | Prisma.SmsWhereInput[]
   id?: Prisma.IntFilter<"Sms"> | number
   notificationId?: Prisma.IntFilter<"Sms"> | number
-  recipient?: Prisma.IntFilter<"Sms"> | number
+  recipient?: Prisma.StringFilter<"Sms"> | string
   sentAt?: Prisma.DateTimeNullableFilter<"Sms"> | Date | string | null
   notification?: Prisma.XOR<Prisma.NotificationsScalarRelationFilter, Prisma.NotificationsWhereInput>
 }
@@ -233,7 +229,7 @@ export type SmsWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.SmsWhereInput | Prisma.SmsWhereInput[]
   OR?: Prisma.SmsWhereInput[]
   NOT?: Prisma.SmsWhereInput | Prisma.SmsWhereInput[]
-  recipient?: Prisma.IntFilter<"Sms"> | number
+  recipient?: Prisma.StringFilter<"Sms"> | string
   sentAt?: Prisma.DateTimeNullableFilter<"Sms"> | Date | string | null
   notification?: Prisma.XOR<Prisma.NotificationsScalarRelationFilter, Prisma.NotificationsWhereInput>
 }, "id" | "notificationId">
@@ -256,12 +252,12 @@ export type SmsScalarWhereWithAggregatesInput = {
   NOT?: Prisma.SmsScalarWhereWithAggregatesInput | Prisma.SmsScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"Sms"> | number
   notificationId?: Prisma.IntWithAggregatesFilter<"Sms"> | number
-  recipient?: Prisma.IntWithAggregatesFilter<"Sms"> | number
+  recipient?: Prisma.StringWithAggregatesFilter<"Sms"> | string
   sentAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Sms"> | Date | string | null
 }
 
 export type SmsCreateInput = {
-  recipient: number
+  recipient: string
   sentAt?: Date | string | null
   notification: Prisma.NotificationsCreateNestedOneWithoutSmsInput
 }
@@ -269,12 +265,12 @@ export type SmsCreateInput = {
 export type SmsUncheckedCreateInput = {
   id?: number
   notificationId: number
-  recipient: number
+  recipient: string
   sentAt?: Date | string | null
 }
 
 export type SmsUpdateInput = {
-  recipient?: Prisma.IntFieldUpdateOperationsInput | number
+  recipient?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   notification?: Prisma.NotificationsUpdateOneRequiredWithoutSmsNestedInput
 }
@@ -282,26 +278,26 @@ export type SmsUpdateInput = {
 export type SmsUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   notificationId?: Prisma.IntFieldUpdateOperationsInput | number
-  recipient?: Prisma.IntFieldUpdateOperationsInput | number
+  recipient?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type SmsCreateManyInput = {
   id?: number
   notificationId: number
-  recipient: number
+  recipient: string
   sentAt?: Date | string | null
 }
 
 export type SmsUpdateManyMutationInput = {
-  recipient?: Prisma.IntFieldUpdateOperationsInput | number
+  recipient?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type SmsUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   notificationId?: Prisma.IntFieldUpdateOperationsInput | number
-  recipient?: Prisma.IntFieldUpdateOperationsInput | number
+  recipient?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -320,7 +316,6 @@ export type SmsCountOrderByAggregateInput = {
 export type SmsAvgOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
-  recipient?: Prisma.SortOrder
 }
 
 export type SmsMaxOrderByAggregateInput = {
@@ -340,7 +335,6 @@ export type SmsMinOrderByAggregateInput = {
 export type SmsSumOrderByAggregateInput = {
   id?: Prisma.SortOrder
   notificationId?: Prisma.SortOrder
-  recipient?: Prisma.SortOrder
 }
 
 export type SmsCreateNestedOneWithoutNotificationInput = {
@@ -376,13 +370,13 @@ export type SmsUncheckedUpdateOneWithoutNotificationNestedInput = {
 }
 
 export type SmsCreateWithoutNotificationInput = {
-  recipient: number
+  recipient: string
   sentAt?: Date | string | null
 }
 
 export type SmsUncheckedCreateWithoutNotificationInput = {
   id?: number
-  recipient: number
+  recipient: string
   sentAt?: Date | string | null
 }
 
@@ -403,13 +397,13 @@ export type SmsUpdateToOneWithWhereWithoutNotificationInput = {
 }
 
 export type SmsUpdateWithoutNotificationInput = {
-  recipient?: Prisma.IntFieldUpdateOperationsInput | number
+  recipient?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type SmsUncheckedUpdateWithoutNotificationInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  recipient?: Prisma.IntFieldUpdateOperationsInput | number
+  recipient?: Prisma.StringFieldUpdateOperationsInput | string
   sentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
@@ -465,7 +459,7 @@ export type $SmsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     notificationId: number
-    recipient: number
+    recipient: string
     sentAt: Date | null
   }, ExtArgs["result"]["sms"]>
   composites: {}
@@ -893,7 +887,7 @@ export interface Prisma__SmsClient<T, Null = never, ExtArgs extends runtime.Type
 export interface SmsFieldRefs {
   readonly id: Prisma.FieldRef<"Sms", 'Int'>
   readonly notificationId: Prisma.FieldRef<"Sms", 'Int'>
-  readonly recipient: Prisma.FieldRef<"Sms", 'Int'>
+  readonly recipient: Prisma.FieldRef<"Sms", 'String'>
   readonly sentAt: Prisma.FieldRef<"Sms", 'DateTime'>
 }
     

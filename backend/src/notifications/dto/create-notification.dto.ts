@@ -4,11 +4,9 @@ import {
   IsIn,
   IsMobilePhone,
   IsNotEmpty,
-  IsNumber,
   IsOptional,
   IsString,
   Length,
-  Min,
   MinLength,
 } from 'class-validator';
 
@@ -53,10 +51,10 @@ export class CreateNotificationDto {
     description: 'Destinatario del SMS',
   })
   @IsOptional()
-  @IsNumber()
+  @IsString()
   @IsMobilePhone()
-  @Min(8)
-  phone?: number;
+  @MinLength(8)
+  phone?: string;
 
   @ApiProperty({
     example: '4jK9sW2mX8pQ5vL3nB7z',
