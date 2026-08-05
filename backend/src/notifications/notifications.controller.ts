@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   BadRequestException,
+  Response,
 } from '@nestjs/common';
 import { NotificationsService } from './notifications.service';
 import {
@@ -45,7 +46,6 @@ export class NotificationsController {
       createNotificationDto.content.slice(0, 160);
 
     console.log('Controller de Create');
-    console.log(createNotificationDto);
     switch (createNotificationDto.channel) {
       case 'EMAIL':
         if (createNotificationDto.email)
@@ -95,19 +95,31 @@ export class NotificationsController {
 
   @Patch(':id')
   @ApiOperation({
-    summary: 'Actualiza una notificacion si es que no se ah enviado',
+    summary: 'Actualiza una notificacion si esta pendiente de envio',
   })
   updateNotification(
     @Param('id') id: string,
     @Body() updateNotificationDto: UpdateNotificationDto,
     @CurrentUser() user: AuthenticatedUser,
   ) {
+    console.log('Controller de Update');
+
     return this.notificationsService.updateNotification(
       +id,
       updateNotificationDto,
       user,
     );
   }
+
+  @Post(':id/retry')
+  @ApiOperation({
+    summary:
+      'Intenta volver a enviar una notificacion en estado pendiente, sin modificar campos de la misma',
+  })
+  retrySend(
+    @Param('id') id: string,
+    @CurrentUser() { sub }: AuthenticatedUserId,
+  ) {}
 
   @Delete(':id')
   @ApiOperation({

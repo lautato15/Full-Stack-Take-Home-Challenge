@@ -70,7 +70,7 @@ export class NotificationsService {
         push: true,
       },
     });
-   
+
     if (!newNotification)
       throw new NotFoundException('No se pudo crear la notificacion');
     else {
@@ -78,7 +78,6 @@ export class NotificationsService {
         unstructuredNotification(newNotification);
       return notificationUnstructured;
     }
-
   }
 
   async findAllNotifications(sub: number) {
@@ -96,7 +95,6 @@ export class NotificationsService {
       throw new BadRequestException('No existen notificaciones.');
     const notificationsUnstructured = unstructuredNotifications(notifications);
     return notificationsUnstructured;
-  
   }
 
   async findOneNotification(idNotification: number, sub: number) {
@@ -120,6 +118,7 @@ export class NotificationsService {
     updateNotificationDto: UpdateNotificationDto,
     user: AuthenticatedUser,
   ) {
+    console.log('Service Update');
     const notification = await this.prisma.notifications.findUnique({
       where: {
         authorId: user.sub,
@@ -196,10 +195,13 @@ export class NotificationsService {
         [notification.channel.toLowerCase()]: serviceUpdate,
       },
     });
+
     if (!updateNotification)
       throw new NotFoundException('No se pudo actualizar la Notificacion');
     return unstructuredNotification(updateNotification);
   }
+
+  async retryNotification(idNotification: number, sub: number) {}
 
   async removeNotification(idNotification: number, sub: number) {
     try {

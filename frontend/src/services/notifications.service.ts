@@ -36,9 +36,10 @@ export async function createNotification(
 export async function updateNotification(
   notification: SendNotificaction,
   token: string,
+  id: number,
 ) {
   const parseNotificationSend = parseRecipient(notification);
-  const response = await fetch(`${API_URL}/${notification.id}`, {
+  const response = await fetch(`${API_URL}/${id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

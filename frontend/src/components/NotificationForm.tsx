@@ -50,7 +50,7 @@ function NotificationForm() {
       (value) => value.trim() !== "",
     );
     if (dataValidate && token) {
-      if (notification) {
+      if (!notification) {
         const result = await createNotification(form, token);
         if (result.status === 201) {
           toast.success(
@@ -59,8 +59,8 @@ function NotificationForm() {
           navigate("/dashboard");
         } else toast.error(result.msg);
       } else {
-        const result = await updateNotification(form, token);
-        if (result.status === 201) {
+        const result = await updateNotification(form, token, notification.id);
+        if (result.status === 200) {
           toast.success(
             <NotificationToast notification={result} msg={"creada"} />,
           );

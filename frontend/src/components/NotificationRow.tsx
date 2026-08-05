@@ -40,7 +40,9 @@ function NotificationRow({
         </span>
       </td>
       <td className="py-5">
-        <span className="rounded-full bg-green-100 px-3 py-1 text-sm font-medium text-green-700">
+        <span
+          className={`rounded-full bg-green-100 ${sentAt ? "bg-green-100" : "bg-red-100"} px-3 py-1 text-sm font-medium ${sentAt ? "text-green-700" : "text-red-700"}`}
+        >
           {sentAt ? "ENVIADO " : "PENDIENTE "}
         </span>
       </td>

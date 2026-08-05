@@ -5,7 +5,6 @@ type NotificationToastProp = {
   msg: string;
 };
 function NotificationToast({ notification, msg }: NotificationToastProp) {
-  console.log(notification);
   return (
     <div className="space-y-2">
       <p className="font-bold">Notificacion {msg} con exito.</p>
