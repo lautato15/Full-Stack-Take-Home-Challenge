@@ -38,43 +38,10 @@ export class NotificationsController {
     @Body() createNotificationDto: CreateNotificationDto,
     @CurrentUser() user: AuthenticatedUser,
   ) {
-    let sentAt: Date | null = null;
-    if (
-      createNotificationDto.channel === 'SMS' &&
-      createNotificationDto.content.length > 160
-    )
-      createNotificationDto.content.slice(0, 160);
-
     console.log('Controller de Create');
-    switch (createNotificationDto.channel) {
-      case 'EMAIL':
-        if (createNotificationDto.email)
-          sentAt = this.emailService.sendEmail(createNotificationDto, user);
-        else throw new BadRequestException('No hay un email asignado');
-        break;
-      case 'SMS':
-        if (createNotificationDto.phone)
-          sentAt = this.emailService.sendEmail(createNotificationDto, user);
-        else
-          throw new BadRequestException('No hay un numero telefónico asignado');
-        break;
-      case 'PUSH':
-        if (createNotificationDto.token)
-          sentAt = this.smsService.sendSMS(createNotificationDto, user);
-        else throw new BadRequestException('No hay un token asignado');
-        break;
-      default:
-        if (
-          createNotificationDto.email ||
-          createNotificationDto.phone ||
-          createNotificationDto.token
-        )
-          throw new BadRequestException('Tipo de canal de envío desconocido');
-    }
     return this.notificationsService.createNotification(
       createNotificationDto,
       user,
-      sentAt,
     );
   }
 
@@ -102,8 +69,6 @@ export class NotificationsController {
     @Body() updateNotificationDto: UpdateNotificationDto,
     @CurrentUser() user: AuthenticatedUser,
   ) {
-    console.log('Controller de Update');
-
     return this.notificationsService.updateNotification(
       +id,
       updateNotificationDto,
@@ -116,10 +81,9 @@ export class NotificationsController {
     summary:
       'Intenta volver a enviar una notificacion en estado pendiente, sin modificar campos de la misma',
   })
-  retrySend(
-    @Param('id') id: string,
-    @CurrentUser() { sub }: AuthenticatedUserId,
-  ) {}
+  retrySend(@Param('id') id: string, @CurrentUser() user: AuthenticatedUser) {
+    return this.notificationsService.retryNotification(+id, user);
+  }
 
   @Delete(':id')
   @ApiOperation({

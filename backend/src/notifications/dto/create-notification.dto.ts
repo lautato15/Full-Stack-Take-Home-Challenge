@@ -1,14 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import {
-  IsEmail,
-  IsIn,
-  IsMobilePhone,
-  IsNotEmpty,
-  IsOptional,
-  IsString,
-  Length,
-  MinLength,
-} from 'class-validator';
+import { IsEmail, IsIn, IsNotEmpty, IsString, Length } from 'class-validator';
 
 export class CreateNotificationDto {
   @ApiProperty({
@@ -42,26 +33,8 @@ export class CreateNotificationDto {
     example: 'example@mail.com',
     description: 'Destinatario del correo',
   })
-  @IsOptional()
+  @IsNotEmpty()
   @IsEmail()
-  email?: string;
-
-  @ApiProperty({
-    example: 12345678,
-    description: 'Destinatario del SMS',
-  })
-  @IsOptional()
-  @IsString()
-  @IsMobilePhone()
-  @MinLength(8)
-  phone?: string;
-
-  @ApiProperty({
-    example: '4jK9sW2mX8pQ5vL3nB7z',
-    description: 'Token del dispositivo destinatario',
-  })
-  @IsOptional()
-  @IsString()
-  @MinLength(15)
-  token?: string;
+  recipient!: string;
 }
+  

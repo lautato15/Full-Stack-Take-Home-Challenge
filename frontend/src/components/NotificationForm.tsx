@@ -145,6 +145,7 @@ function NotificationForm() {
               <select
                 value={form.channel}
                 required
+                disabled={!!notification}
                 id="channel"
                 className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition focus:border-violet-600"
                 onChange={(e) => {

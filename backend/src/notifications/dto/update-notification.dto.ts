@@ -20,13 +20,7 @@ export class UpdateNotificationDto extends PartialType(CreateNotificationDto) {
   @IsString()
   content!: string;
 
-  @ApiProperty({
-    example: ['EMAIL', 'SMS', 'PUSH'],
-    description:
-      'Canal por el cual se enviara la notificacion, solo se admiten los valores: "EMAIL", "SMS", "PUSH"',
-  })
   @IsOptional()
   @IsString()
-  @IsIn(['EMAIL', 'SMS', 'PUSH'])
-  channel!: string;
+  recipient!: string;
 }

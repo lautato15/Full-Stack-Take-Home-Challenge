@@ -1,18 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { AuthenticatedUser } from 'src/auth/decorators/current-user.decorator';
 import { UpdateNotificationDto } from '../dto/update-notification.dto';
+import { SendNotification } from '../types/notification';
 
 @Injectable()
 export class EmailService {
-  sendEmail(notificationDto: UpdateNotificationDto, user: AuthenticatedUser) {
+  sendEmail(
+    { title, content, recipient }: SendNotification,
+    user: AuthenticatedUser,
+  ) {
     const template = {
-      recipient: notificationDto.email,
+      recipient: recipient,
       sender: user.email,
-      subject: notificationDto.title,
-      content: notificationDto.content,
+      subject: title,
+      content: content,
     };
     // const sent = Boolean(Math.floor(Math.random() * 2));
-    const sent = false
+    const sent = false;
     return sent ? new Date() : null;
   }
 }

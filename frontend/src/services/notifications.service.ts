@@ -38,16 +38,17 @@ export async function updateNotification(
   token: string,
   id: number,
 ) {
-  const parseNotificationSend = parseRecipient(notification);
+  const { channel, ...notificationWithOutChannel } = notification;
   const response = await fetch(`${API_URL}/${id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(parseNotificationSend),
+    body: JSON.stringify(notificationWithOutChannel),
   });
   const result = await response.json();
+  console.log(result);
   return { status: response.status, ...result };
 }
 export async function deleteNotification(
