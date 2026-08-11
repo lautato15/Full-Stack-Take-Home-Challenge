@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import {
   deleteNotification,
   getNotifications,
+  retryNotification,
 } from "../services/notifications.service";
 import NotificationRow from "./NotificationRow";
 import type { Notification } from "../types/types";
@@ -24,7 +25,15 @@ function Dashboard() {
   function handleNewNotification() {
     navigate("/notifications/new");
   }
-  async function handleSendNotification(id: number) {}
+  async function handleSendNotification(id: number) {
+    if (token) {
+      const result = await retryNotification(token, id);
+      loadNotifications();
+      if (result.status === 201)
+        toast.info(<NotificationToast notification={result} msg={"enviada"} />);
+      else toast.info(result.msg);
+    }
+  }
 
   async function handleEditNotification(notification: Notification) {
     navigate(`/notifications/${notification.id}/edit`, { state: notification });

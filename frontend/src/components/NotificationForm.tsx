@@ -35,6 +35,7 @@ function NotificationForm() {
         recipient: notification.recipient,
       });
       setFlag("actualizar ");
+      setChannelSelect(notification.channel);
     }
   }, []);
 
@@ -57,7 +58,11 @@ function NotificationForm() {
             <NotificationToast notification={result} msg={"creada"} />,
           );
           navigate("/dashboard");
-        } else toast.error(result.msg);
+        } else {
+          result.message.map((m: string) => {
+            toast.error(m);
+          });
+        }
       } else {
         const result = await updateNotification(form, token, notification.id);
         if (result.status === 200) {

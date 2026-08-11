@@ -34,7 +34,7 @@ export class CreateNotificationDto {
     description: 'Destinatario del correo',
   })
   @IsNotEmpty()
-  @IsEmail()
+  @IsString()
   recipient!: string;
 }
   

@@ -1,5 +1,4 @@
 import type { SendNotificaction, Notification } from "../types/types";
-import { parseRecipient } from "./parseRecipient";
 const API_URL = `${import.meta.env.VITE_API_URL}/notifications`;
 
 export async function getNotifications(token: string) {
@@ -21,14 +20,14 @@ export async function createNotification(
   notification: SendNotificaction,
   token: string,
 ) {
-  const parseNotificationSend = parseRecipient(notification);
+  console.log(JSON.stringify(notification));
   const response = await fetch(API_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(parseNotificationSend),
+    body: JSON.stringify(notification),
   });
   const result = await response.json();
   return { status: response.status, ...result };
@@ -58,6 +57,17 @@ export async function deleteNotification(
   const response = await fetch(`${API_URL}/${idNotification}`, {
     method: "DELETE",
     headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  const result = await response.json();
+  return { status: response.status, ...result };
+}
+export async function retryNotification(token: string, id: number) {
+  const response = await fetch(`${API_URL}/${id}/retry`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
   });
