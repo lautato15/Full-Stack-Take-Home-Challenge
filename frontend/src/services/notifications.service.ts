@@ -1,5 +1,5 @@
 import type { SendNotificaction, Notification } from "../types/types";
-const API_URL = `${import.meta.env.VITE_API_URL}/notifications`;
+const API_URL = `${import.meta.env.VITE_API_URL}notifications`;
 
 export async function getNotifications(token: string) {
   const response = await fetch(API_URL, {
