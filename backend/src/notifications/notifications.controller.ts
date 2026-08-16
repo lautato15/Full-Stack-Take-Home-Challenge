@@ -14,7 +14,7 @@ import {
   AuthenticatedUser,
   AuthenticatedUserId,
   CurrentUser,
-} from 'src/auth/decorators/current-user.decorator';
+} from '../auth/decorators/current-user.decorator';
 import { EmailService } from './email/email.service';
 import { SmsService } from './sms/sms.service';
 import { PushService } from './push/push.service';

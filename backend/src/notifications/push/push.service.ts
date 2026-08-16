@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { AuthenticatedUser } from 'src/auth/decorators/current-user.decorator';
+import { AuthenticatedUser } from '../auth/decorators/current-user.decorator';
 import { UpdateNotificationDto } from '../dto/update-notification.dto';
 import { SendNotification } from '../types/notification';
 

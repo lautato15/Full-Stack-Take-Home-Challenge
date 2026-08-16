@@ -5,12 +5,12 @@ import {
 } from '@nestjs/common';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { PrismaService } from '../prisma/prisma.service';
-import { AuthenticatedUser } from 'src/auth/decorators/current-user.decorator';
+import { AuthenticatedUser } from '../auth/decorators/current-user.decorator';
 import { EmailService } from './email/email.service';
 import { SmsService } from './sms/sms.service';
 import { PushService } from './push/push.service';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
-import { Prisma } from 'src/generated/client';
+import { Prisma } from '../generated/client';
 import {
   unstructuredNotifications,
   unstructuredNotification,

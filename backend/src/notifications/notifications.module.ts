@@ -4,7 +4,7 @@ import { NotificationsController } from './notifications.controller';
 import { EmailService } from './email/email.service';
 import { SmsService } from './sms/sms.service';
 import { PushService } from './push/push.service';
-import { PrismaModule } from 'src/prisma/prisma.module';
+import { PrismaModule } from '../prisma/prisma.module';
 
 @Module({
   imports: [PrismaModule],
