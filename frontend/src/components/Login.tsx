@@ -20,11 +20,19 @@ function Login() {
         if (!token) {
           toast.error("Error interno del sistema, vuelva a intentarlo");
           console.log({ message: "Error al obtener token", token: token });
-        } else if (token !== "off") setToken(token);
+        } else if (token !== "off") {
+          setToken(token);
+          localStorage.setItem("token", token);
+        }
       } else {
-        const token = register(email, password);
-        toast.error("Error interno del sistema, vuelva a intentarlo");
-        console.log({ message: "Error al obtener token", token: token });
+        const token = await register(email, password);
+        if (!token) {
+          toast.error("Error interno del sistema, vuelva a intentarlo");
+          console.log({ message: "Error al obtener token", token: token });
+        } else if (token !== "off") {
+          setToken(token);
+          localStorage.setItem("token", token);
+        }
       }
     }
   }

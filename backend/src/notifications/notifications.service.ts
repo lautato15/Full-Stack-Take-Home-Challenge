@@ -222,11 +222,11 @@ export class NotificationsService {
     });
     if (!notification)
       throw new NotFoundException('No se encontro la notificacion');
-    else if (
-      notification.email?.sentAt ||
-      notification.sms?.sentAt ||
-      notification.push?.sentAt
-    ) {
+    const emailSent = notification.email?.sentAt;
+    const smsSent = notification.sms?.sentAt;
+    const pushSent = notification.push?.sentAt;
+
+    if (emailSent || smsSent || pushSent) {
       throw new NotFoundException(
         'Esta notificacion ya fue enviada y no se puede modificar',
       );
@@ -292,11 +292,11 @@ export class NotificationsService {
     });
     if (!notification)
       throw new NotFoundException('No se encontro la notificacion');
-    else if (
-      notification.email?.sentAt ||
-      notification.sms?.sentAt ||
-      notification.push?.sentAt
-    ) {
+    const emailSent = notification.email?.sentAt;
+    const smsSent = notification.sms?.sentAt;
+    const pushSent = notification.push?.sentAt;
+
+    if (emailSent || smsSent || pushSent) {
       throw new NotFoundException(
         'Esta notificacion ya fue enviada y no se puede modificar',
       );

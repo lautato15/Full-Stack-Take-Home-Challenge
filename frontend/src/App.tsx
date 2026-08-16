@@ -10,8 +10,9 @@ import { ProtectedRoute } from "./routes/ProtectedRoutes";
 import NotificationForm from "./components/NotificationForm";
 
 function App() {
-  const [token, setToken] = useState<string | null>(null);
-
+const [token, setToken] = useState<string | null>(() => {
+  return localStorage.getItem("token");
+});
   return (
     <>
       <ToastContainer aria-label="Alert" />
