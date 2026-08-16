@@ -69,6 +69,21 @@ export class NotificationsService {
         );
     }
   }
+  private getSentAt(notification: NotificationStructured): Date | null {
+    switch (notification.channel) {
+      case 'EMAIL':
+        return notification.email?.sentAt ?? null;
+
+      case 'SMS':
+        return notification.sms?.sentAt ?? null;
+
+      case 'PUSH':
+        return notification.push?.sentAt ?? null;
+
+      default:
+        return null;
+    }
+  }
   private packageService(
     channel: string,
     recipient: string,
@@ -222,11 +237,7 @@ export class NotificationsService {
     });
     if (!notification)
       throw new NotFoundException('No se encontro la notificacion');
-    const emailSent = notification.email?.sentAt;
-    const smsSent = notification.sms?.sentAt;
-    const pushSent = notification.push?.sentAt;
-
-    if (emailSent || smsSent || pushSent) {
+    if (this.getSentAt(notification)) {
       throw new NotFoundException(
         'Esta notificacion ya fue enviada y no se puede modificar',
       );
@@ -292,11 +303,7 @@ export class NotificationsService {
     });
     if (!notification)
       throw new NotFoundException('No se encontro la notificacion');
-    const emailSent = notification.email?.sentAt;
-    const smsSent = notification.sms?.sentAt;
-    const pushSent = notification.push?.sentAt;
-
-    if (emailSent || smsSent || pushSent) {
+    if (this.getSentAt(notification)) {
       throw new NotFoundException(
         'Esta notificacion ya fue enviada y no se puede modificar',
       );
