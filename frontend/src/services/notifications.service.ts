@@ -8,7 +8,15 @@ export async function getNotifications(token: string) {
       Authorization: `Bearer ${token}`,
     },
   });
-  const notifications: Notification[] = await response.json();
+  const data = await response.json();
+
+  if (!response.ok) {
+    console.error("Error del servidor:", data);
+    throw new Error(data.message || "Error al obtener las notificaciones");
+  }
+
+  const notifications: Notification[] = data;
+  
   const parseNotifications = notifications.map((n) => {
     if (n.sentAt) return { ...n, sentAt: new Date(n.sentAt) };
     else return n;
@@ -20,7 +28,6 @@ export async function createNotification(
   notification: SendNotificaction,
   token: string,
 ) {
-  console.log(JSON.stringify(notification));
   const response = await fetch(API_URL, {
     method: "POST",
     headers: {
@@ -47,7 +54,6 @@ export async function updateNotification(
     body: JSON.stringify(notificationWithOutChannel),
   });
   const result = await response.json();
-  console.log(result);
   return { status: response.status, ...result };
 }
 export async function deleteNotification(
