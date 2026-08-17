@@ -9,8 +9,8 @@ function NotificationRow({
   onSend,
   onEdit,
 }: NotificationRowProps) {
-  const { title, content, channel, recipient, sentAt, id } = notification;
 
+  const { title, content, channel, recipient, sentAt, id } = notification;
   const colorChannel: colorChannel = {
     EMAIL: "blue",
     SMS: "yellow",
