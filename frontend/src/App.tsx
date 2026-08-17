@@ -13,10 +13,16 @@ function App() {
 const [token, setToken] = useState<string | null>(() => {
   return localStorage.getItem("token");
 });
+const logout = () => {
+  localStorage.removeItem("token");
+  setToken(null);
+};
+
+
   return (
     <>
       <ToastContainer aria-label="Alert" />
-      <AuthContext.Provider value={{ token, setToken }}>
+      <AuthContext.Provider value={{ token, setToken, logout }}>
         <BrowserRouter>
           <Routes>
             <Route

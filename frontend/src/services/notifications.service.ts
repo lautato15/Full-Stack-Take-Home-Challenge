@@ -12,7 +12,7 @@ export async function getNotifications(token: string) {
 
   if (!response.ok) {
     console.error("Error del servidor:", data);
-    throw new Error(data.message || "Error al obtener las notificaciones");
+  throw new Error(`${response.status}: ${data.message}`);
   }
 
   const notifications: Notification[] = data;

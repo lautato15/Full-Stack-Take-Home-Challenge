@@ -3,6 +3,7 @@ import { createContext, useContext } from "react";
 export type AuthContextType = {
   token: string | null;
   setToken: React.Dispatch<React.SetStateAction<string | null>>;
+  logout: () => void;
 };
 
 export const AuthContext = createContext<AuthContextType | null>(null);
