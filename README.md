@@ -8,7 +8,7 @@ Permite a los usuarios registrarse, iniciar sesión y administrar sus propias no
 
 🌐 **Aplicación en vivo:** [Ver Notifications App](https://notifications-appfrontend.vercel.app/)
 
-📚 **Documentación de la API:** [Ver Swagger](https://notifications-appbackend.vercel.app/)
+📚 **Documentación de la API:** [Ver Swagger](https://notifications-appbackend.vercel.app/api)
 
 ### 🧪 Credenciales de prueba
 
