@@ -15,14 +15,14 @@ async function bootstrap() {
     .addTag('Notifications APP')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
- SwaggerModule.setup('api', app, documentFactory, {
-   customCssUrl:
-     'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css',
-   customJs: [
-     'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui-bundle.js',
-     'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui-standalone-preset.js',
-   ],
- });
+  SwaggerModule.setup('api', app, documentFactory, {
+    customCssUrl:
+      'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui.css',
+    customJs: [
+      'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui-bundle.js',
+      'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5/swagger-ui-standalone-preset.js',
+    ],
+  });
   app.enableCors({
     origin: [
       'http://localhost:5173',
@@ -33,4 +33,3 @@ async function bootstrap() {
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
-
