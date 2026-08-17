@@ -22,7 +22,7 @@ export async function login(email: string, password: string) {
 
 export async function register(email: string, password: string) {
   try {
-    const response = await fetch(`${API_URL}/register`, {
+    const response = await fetch(`${API_URL}register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ password, email }),
